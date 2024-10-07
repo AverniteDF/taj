@@ -119,6 +119,19 @@ margin-bottom: -5px;
             margin: 10px 0;
         }
 
+        /* Styles for the specific link */
+        .no-color-change {
+        color: inherit;       /* Inherit color from the parent element */
+        text-decoration: none; /* Remove underline if desired */
+        }
+
+        .no-color-change:hover,
+        .no-color-change:visited,
+        .no-color-change:active {
+        color: inherit;       /* Keep colors consistent across all states */
+        text-decoration: none; /* Optional: Prevent underline on hover, active, and visited */
+        }
+
         @media (max-width: 600px) {
             body {
                 padding: 10px;
@@ -227,7 +240,7 @@ margin-bottom: -5px;
 </article>
 
 <footer>
-    <p>&copy; 2024 <a href="../">The Automated Journalists</a> | All rights reserved</p>
+    <p>&copy; 2024 <a href="index.html" class="no-color-change">The Automated Journalists</a> | All rights reserved</p>
 </footer>
 
 </body>
