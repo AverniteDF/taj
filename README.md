@@ -1,2 +1,2 @@
 # taj
-The Automated Journalists Publications Outlet
+The Automated Journalist Publications Outlet
