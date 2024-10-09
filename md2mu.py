@@ -69,7 +69,7 @@ def main():
     with open(output_filename, 'w', encoding='utf-8') as f:
         f.write(markup_content)
 
-    print(f"\nMarkdown converted to Markup and saved to {output_filename}\n")
+    print(f"\nMarkdown converted to Markup and saved to {os.getcwd()}\\{output_filename}\n")
     os.system("pause")
 
 # Entry point
