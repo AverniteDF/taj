@@ -12,6 +12,13 @@ def markdown_to_markup(content):
     content = re.sub(r'\r\n', r'\n', content) #, flags=re.MULTILINE) # Need this, is it a problem with Windows Notepad?
     content = re.sub(r'\n\n+', r'\n', content) #, flags=re.MULTILINE)
 
+    # Remove leading and trailing spaces
+    content = re.sub(r'^\s+', r'', content, flags=re.MULTILINE)
+    content = re.sub(r'\s+$', r'', content, flags=re.MULTILINE)
+
+    # Remove bolding from headers
+    content = re.sub(r'^(\s*#+\s*)\*\*(.+)\*\*$', r'\1\2', content, flags=re.MULTILINE)
+
     # Replace headers
     content = re.sub(r'^\s*#####\s*(.+?)\s*$', r'<h5>\1</h5>', content, flags=re.MULTILINE)
     content = re.sub(r'^\s*####\s*(.+?)\s*$', r'<h4>\1</h4>', content, flags=re.MULTILINE)
@@ -22,12 +29,25 @@ def markdown_to_markup(content):
     # Replace horizontal lines (---)
     content = re.sub(r'^\s*---\s*$', r'<hr>', content, flags=re.MULTILINE)
 
-    # Add paragraph markup tags
-    content = re.sub(r'^([^<].+)', r'<p>\1</p>', content) #, flags=re.MULTILINE)
-    content = re.sub(r'\n([^<].+)', r'\n<p>\1</p>', content) #, flags=re.MULTILINE)
+    # Handle lists
+    # content = re.sub(r'\n(-.*)(\n[^-])', r'\n<ul>\n\1\n</ul>\2', content) # Doesn't quite work
+    content = re.sub(r'^-\s*(.*)$', r'<li>\1</li>', content, flags=re.MULTILINE)
 
+    # Add paragraph markup tags
+    # content = re.sub(r'^([^<].+)', r'<p>\1</p>', content)
+    # content = re.sub(r'\n([^<].+)', r'\n<p>\1</p>', content)
+    content = re.sub(r'^([^<].*)$', r'<p>\1</p>', content, flags=re.MULTILINE)
+
+    # Handle bolding
+    content = re.sub(r'\*\*([^\*]+)\*\*', r'<strong>\1</strong>', content)
+
+    # Handle italics
+    content = re.sub(r'\*([^\*]+)\*', r'<em>\1</em>', content)
+
+    # Insert blank line before headers
     content = content.replace('\n<h', '\n\n<h')
 
+    # Apply indentation to all lines
     content = f'    {content}'
     content = content.replace('\n<', '\n    <')
 
@@ -69,7 +89,11 @@ def main():
     with open(output_filename, 'w', encoding='utf-8') as f:
         f.write(markup_content)
 
+    # Also copy it to the clipboard
+    pyperclip.copy(markup_content)
+
     print(f"\nMarkdown converted to Markup and saved to {os.getcwd()}\\{output_filename}\n")
+    print("It has also been copied to the clipboard.\n")
     os.system("pause")
 
 # Entry point
