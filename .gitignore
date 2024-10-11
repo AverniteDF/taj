@@ -1,0 +1,8 @@
+# Ignore all files that start with a period
+.*
+
+# Exceptions:
+# If you want to track some specific files that start with a period,
+# you can negate the ignore rule by using an exclamation mark (!)
+!/.gitignore  # Keep the .gitignore file itself
+!/some/other/.file  # Keep another specific file if needed
