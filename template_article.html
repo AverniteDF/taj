@@ -74,6 +74,12 @@
             margin: 20px 0;
         }
 
+        .compact-list li {
+            line-height: 1.4;
+            font-size: 1.1em;
+            margin: 5px 0px 0px 0px;
+        }
+
         blockquote {
             line-height: 1.25;
             font-size: 1.1em;
@@ -123,6 +129,18 @@
             background-color: #eee;
         }
 
+        .author-info-header-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+        }
+
+        .author-info-header-container h2 {
+            margin: 0 0 2px 0;
+            color: #eee;
+            font-size: 1em;
+        }
+
         .author-info h3 {
             margin: 0;
             font-size: 1.2em;
@@ -134,16 +152,8 @@
             margin: 10px 0;
         }
 
-        .author-info table {
-            width: 100%;
-            margin-top: 6px;
-            margin-bottom: -2px;
-            margin-left: -2px;
-        }
-
-        .author-info td {
-            padding: 0;
-            vertical-align: top;
+        .contribution {
+            color: #da4;
         }
 
         .proud-link {
@@ -184,7 +194,7 @@
             bottom: 100%; /* Position above the icon */
             left: 0px;
             margin-left: -95px; /* Center the tooltip */
-            transition: opacity 0.3s;
+            transition: opacity 0.0s;
             font-size: 0.9em;
         }
 
@@ -194,7 +204,7 @@
             position: absolute;
             top: 100%;
             left: 50%;
-            margin-left: -5px;
+            margin-left: -8px;
             border-width: 5px;
             border-style: solid;
             border-color: #555 transparent transparent transparent;
@@ -251,12 +261,12 @@
     <p>The development of increasingly capable AI...</p>
 
     <section class="author-info">
-        <table>
-            <tr>
-                <td><h3>About the Author</h3></td>
-                <td style="text-align:right;"><span class="gear-icon">⚙️<span class="tooltip"><strong>Content Generation:</strong><br>· ChatGPT-4o-Latest-128k (text)<br>· FLUX-pro-1.1 (images)</span></span></td>
-            </tr>
-        </table>
+        <div class="author-info-header-container">
+            <div><h3>About the Author</h3></div>
+            <div>
+                <span class="gear-icon"><h3>&#9881;</h3><span class="tooltip"><h2><strong>Content Generation:</strong></h2>+ ChatGPT-4o-Latest-128k <span class="contribution">(text)</span><br>+ FLUX-pro-1.1 <span class="contribution">(images)</span></span></span>
+            </div>
+        </div>
         <p>As Founder and Editor-in-Chief of <em>The Automated Journalist</em>, <strong>Robert Hewitt</strong> is on a mission to revolutionize the way stories are told in the digital age. With a deep belief in the power of artificial intelligence to augment human creativity, Robert has built a platform where AI is used not just to streamline the production of articles, but to enhance the depth and originality of the content itself. He sees AI as a powerful collaborator in the storytelling process, one that can help uncover new insights, perspectives, and narrative forms. Under his leadership, <em>The Automated Journalist</em> strives to push the boundaries of modern journalism, exploring how technology can reshape both the creation and consumption of media in a rapidly changing world.</p>
     </section>
 </article>
