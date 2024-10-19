@@ -71,6 +71,11 @@ def check_article_conformance(article_file, template_start, template_end):
     with open(article_file, 'r', encoding='utf-8') as f:
         article_lines = f.readlines()
 
+    for line in article_lines:
+        if '--aspect' in line:
+            print(f'Illegal syntax "--aspect" in {article_file}\n')
+            return False
+
     article_start, article_end = extract_relevant_sections(article_lines)
 
     # Compare start section
