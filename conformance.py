@@ -1,4 +1,5 @@
 import os
+import re
 import difflib
 
 # Define the directory containing the articles and the template file.
@@ -72,8 +73,9 @@ def check_article_conformance(article_file, template_start, template_end):
         article_lines = f.readlines()
 
     for line in article_lines:
-        if '--aspect' in line:
-            print(f'Illegal syntax "--aspect" in {article_file}\n')
+        #if '--aspect' in line:
+        if re.search(r'[^!]--\s*[^>]', line): # Could be improved
+            print(f'Illegal syntax "--" in {article_file}')
             return False
 
     article_start, article_end = extract_relevant_sections(article_lines)
