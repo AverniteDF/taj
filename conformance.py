@@ -73,7 +73,9 @@ def check_article_conformance(article_file, template_start, template_end):
         article_lines = f.readlines()
 
     for line in article_lines:
-        #if '--aspect' in line:
+        #if '<article class=' in line:
+        #    print(f'Illegal syntax "<article class=" in {article_file}')
+        #    return False
         if re.search(r'[^!]--\s*[^>]', line): # Could be improved
             print(f'Illegal syntax "--" in {article_file}')
             return False
