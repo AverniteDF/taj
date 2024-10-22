@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title><!-- (TITLE) --></title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- (STYLE) -->
+</head>
+<body>
+
+<a href="/" class="proud-link">
+<header>
+    <h1><!-- (TITLE) --></h1>
+</header>
+</a>
+
+<article>
+    <div class="published-info">
+        <!-- (DATETIME) -->
+    </div>
+
+    <!-- (CONTENT) -->
+
+    <section class="author-info">
+        <div class="author-info-header-container">
+            <div><h3>About the Author</h3></div>
+            <div class="gear-icon">
+                <h3>&#9881;</h3>
+                <div class="tooltip">
+                    <h2><strong>Contribution:</strong></h2>
+                    <span class="contributors"><!-- (CONTRIBUTORS) --></span>
+                </div>
+            </div>
+        </div>
+        <!-- (AUTHOR) -->
+    </section>
+</article>
+
+<a href="/" class="proud-link">
+<footer>
+    <p>&copy; 2024 The Automated Journalist | All rights reserved</p>
+</footer>
+</a>
+
+</body>
+</html>
