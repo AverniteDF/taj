@@ -19,7 +19,7 @@ function loadFile($path) {
     return file_exists($path) ? file_get_contents($path) : null;
 }
 
-function getArticles($dir) {
+/*function getArticles($dir) {
     $articles = [];
     $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir));
     foreach ($iterator as $fileinfo) {
@@ -28,6 +28,53 @@ function getArticles($dir) {
         }
     }
     return $articles;
+}*/
+
+function getArticles($dir) {
+    $articles = [];
+    $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir));
+    foreach ($iterator as $fileinfo) {
+        if ($fileinfo->isFile() && $fileinfo->getExtension() == 'txt' && substr($fileinfo->getFilename(), 0, 1) != '.') {
+            $articles[] = $fileinfo->getPathname();
+        }
+    }
+
+    // Sort the articles by date and file number
+    usort($articles, function($a, $b) {
+        $aDate = getArticleDateFromPath($a);
+        $bDate = getArticleDateFromPath($b);
+
+        // Compare dates first (descending order)
+        if ($aDate != $bDate) {
+            return strcmp($bDate, $aDate); // Reverse order (latest first)
+        }
+
+        // If dates are the same, compare the file number (descending order)
+        $aNumber = getArticleNumberFromPath($a);
+        $bNumber = getArticleNumberFromPath($b);
+
+        return $bNumber - $aNumber; // Reverse order (largest number first)
+    });
+
+    return $articles;
+}
+
+// Helper function to extract the date from the article path
+function getArticleDateFromPath($path) {
+    // Assuming the path is in the format /articles/YYYY/MM/DD/#.txt
+    // Example: /articles/2024/10/06/1.txt
+    preg_match('/\/articles\/(\d{4})\/(\d{2})\/(\d{2})\//', $path, $matches);
+    if ($matches) {
+        return sprintf('%s-%s-%s', $matches[1], $matches[2], $matches[3]); // YYYY-MM-DD
+    }
+    return '';
+}
+
+// Helper function to extract the file number from the article path
+function getArticleNumberFromPath($path) {
+    // Assuming the file is named like 1.txt, 2.txt, etc.
+    preg_match('/\/(\d+)\.txt$/', $path, $matches);
+    return isset($matches[1]) ? (int) $matches[1] : 0;
 }
 
 function getArticleMetadata($path) {
@@ -83,7 +130,6 @@ function renderIndex($message = '') {
                 $article = $articles[$i];
                 $relativePath = str_replace([$articleDirectory, '.txt'], '', $article['path']);
 
-                //$url = '/?article=' . str_replace('/', '-', substr(trim($relativePath, '/'), 1));
                 $url = '/?article=' . str_replace('/', '-', trim($relativePath, '/\\'));
                 $url = str_replace('\\', '-', $url); // Needed for Windows localhost mode
 
