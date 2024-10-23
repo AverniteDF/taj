@@ -2,12 +2,8 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/theauto1/public_html/
-    - /bin/cp -R articles $DEPLOYPATH
+    - find articles -type f -name "*.txt" -exec /bin/cp --parents {} $DEPLOYPATH \;
     - /bin/cp -R authors $DEPLOYPATH
     - /bin/cp -R styles $DEPLOYPATH
     - /bin/cp -R templates $DEPLOYPATH
     - /bin/cp index.php $DEPLOYPATH
-  exclude:
-    - articles/**/*.html
-    - '**/*.html'
-    - **/*.html
