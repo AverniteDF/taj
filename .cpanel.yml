@@ -7,7 +7,5 @@ deployment:
     - /bin/cp -R styles $DEPLOYPATH
     - /bin/cp -R templates $DEPLOYPATH
     - /bin/cp index.php $DEPLOYPATH
-  ignore:
-    - **.html
   exclude:
-    - /articles/*.html
+    - 'articles/**/*.html'
