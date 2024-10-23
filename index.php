@@ -86,7 +86,8 @@ function getArticles($dir) {
     });
 
     // Reverse the sorted array to get reverse chronological order (newest first)
-    return array_reverse($articles);
+    //return array_reverse($articles);
+		return $articles;
 }
 
 // Helper function to extract the date from the article path
