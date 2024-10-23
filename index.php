@@ -30,7 +30,7 @@ function loadFile($path) {
     return $articles;
 }*/
 
-function getArticles($dir) {
+/*function getArticles($dir) {
     $articles = [];
     $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir));
     foreach ($iterator as $fileinfo) {
@@ -57,6 +57,36 @@ function getArticles($dir) {
     });
 
     return $articles;
+}*/
+
+function getArticles($dir) {
+    $articles = [];
+    $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir));
+    foreach ($iterator as $fileinfo) {
+        if ($fileinfo->isFile() && $fileinfo->getExtension() == 'txt' && substr($fileinfo->getFilename(), 0, 1) != '.') {
+            $articles[] = $fileinfo->getPathname();
+        }
+    }
+
+    // Sort the articles by date and file number (ascending order)
+    usort($articles, function($a, $b) {
+        $aDate = getArticleDateFromPath($a);
+        $bDate = getArticleDateFromPath($b);
+
+        // Compare dates first (ascending order)
+        if ($aDate != $bDate) {
+            return strcmp($aDate, $bDate); // Ascending order (oldest first)
+        }
+
+        // If dates are the same, compare the file number (ascending order)
+        $aNumber = getArticleNumberFromPath($a);
+        $bNumber = getArticleNumberFromPath($b);
+
+        return $aNumber - $bNumber; // Ascending order (smallest number first)
+    });
+
+    // Reverse the sorted array to get reverse chronological order (newest first)
+    return array_reverse($articles);
 }
 
 // Helper function to extract the date from the article path
