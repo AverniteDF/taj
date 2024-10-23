@@ -9,3 +9,5 @@ deployment:
     - /bin/cp index.php $DEPLOYPATH
   ignore:
     - **.html
+  exclude:
+    - /articles/*.html
