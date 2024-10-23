@@ -8,4 +8,6 @@ deployment:
     - /bin/cp -R templates $DEPLOYPATH
     - /bin/cp index.php $DEPLOYPATH
   exclude:
-    - 'articles/**/*.html'
+    - articles/**/*.html
+    - '**/*.html'
+    - **/*.html
