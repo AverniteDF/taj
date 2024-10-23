@@ -1,4 +1,8 @@
 <?php
+
+// Start timer
+$startTime = microtime(true);
+
 // Define paths
 $articleDirectory = __DIR__ . '/articles';
 $templateDirectory = __DIR__ . '/templates';
@@ -19,51 +23,11 @@ function loadFile($path) {
     return file_exists($path) ? file_get_contents($path) : null;
 }
 
-/*function getArticles($dir) {
-    $articles = [];
-    $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir));
-    foreach ($iterator as $fileinfo) {
-        if ($fileinfo->isFile() && $fileinfo->getExtension() == 'txt' && substr($fileinfo->getFilename(), 0, 1) != '.') {
-            $articles[] = $fileinfo->getPathname();
-        }
-    }
-    return $articles;
-}*/
-
-/*function getArticles($dir) {
-    $articles = [];
-    $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir));
-    foreach ($iterator as $fileinfo) {
-        if ($fileinfo->isFile() && $fileinfo->getExtension() == 'txt' && substr($fileinfo->getFilename(), 0, 1) != '.') {
-            $articles[] = $fileinfo->getPathname();
-        }
-    }
-
-    // Sort the articles by date and file number
-    usort($articles, function($a, $b) {
-        $aDate = getArticleDateFromPath($a);
-        $bDate = getArticleDateFromPath($b);
-
-        // Compare dates first (descending order)
-        if ($aDate != $bDate) {
-            return strcmp($bDate, $aDate); // Reverse order (latest first)
-        }
-
-        // If dates are the same, compare the file number (descending order)
-        $aNumber = getArticleNumberFromPath($a);
-        $bNumber = getArticleNumberFromPath($b);
-
-        return $bNumber - $aNumber; // Reverse order (largest number first)
-    });
-
-    return $articles;
-}*/
-
 function getArticles($dir) {
     $articles = [];
     $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir));
     foreach ($iterator as $fileinfo) {
-        if ($fileinfo->isFile() && $fileinfo->getExtension() == 'txt' && substr($fileinfo->getFilename(), 0, 1) != '.') {
+        if ($fileinfo->isFile() && $fileinfo->getExtension() == 'txt' && $fileinfo->getFilename()[0] != '.') {
             $articles[] = $fileinfo->getPathname();
         }
     }
@@ -85,9 +49,7 @@ function getArticles($dir) {
         return $aNumber - $bNumber; // Ascending order (smallest number first)
     });
 
-    // Reverse the sorted array to get reverse chronological order (newest first)
-    //return array_reverse($articles);
-		return $articles;
+    return $articles;
 }
 
 // Helper function to extract the date from the article path
@@ -109,7 +71,22 @@ function getArticleNumberFromPath($path) {
 }
 
 function getArticleMetadata($path) {
-    $content = file_get_contents($path);
+    //$content = file_get_contents($path);
+
+    // More efficient than reading entire article file
+    $handle = fopen($path, 'r');
+    $firstLines = '';
+    if ($handle) {
+        $lineCount = 0;
+        while (($line = fgets($handle)) !== false && $lineCount < 5) {
+						$firstLines .= $line;
+            $lineCount++;
+        }
+        fclose($handle);
+    } else {
+        echo "Error opening file ($path).";
+    }
+		$content = $firstLines;
     
     preg_match('/TITLE=(.+)/', $content, $titleMatch);
     preg_match('/DATETIME=<time datetime="(\d{4}-\d{2}-\d{2})">/', $content, $dateMatch);
@@ -149,7 +126,7 @@ function renderIndex($message = '') {
  
     if ($templateContent) {
         if ($message) {
-            echo "<div style='color: orange; background-color: black; text-align: center; font-family: verdana; font-size: 1em; padding: 5px;'>&#9888; $message &#9888;</div>";
+            $templateContent = str_replace('<!-- (MESSAGE) -->', "<div style='color: orange; text-align: center; font-family: verdana; font-size: 1em; padding: 5px;'>\n    &#9888; $message &#9888;\n</div>", $templateContent);
         }
 
         $html = '';
@@ -253,12 +230,15 @@ function checkForUnrecognizedParams($recognizedParams, $queryParams) {
 }
 
 // Recognized parameters
-$recognizedParams = ['article'];
+$recognizedParams = ['article', 'fnf'];
 
 checkForUnrecognizedParams($recognizedParams, $queryParams);
 
 // Determine what to serve
-if ($articleParam) {
+if (isset($queryParams['fnf'])) // You will need to add "ErrorDocument 404 /index.php?fnf" to .htaccess file and restart Apache web server for this to work (Nginx uses "server { error_page 404 /index.php?fnf; }")
+{
+    renderIndex('The resource you requested does not exist');
+} elseif ($articleParam) {
     // Check if the article specifier has correct format
 		if (preg_match('/^\d{4}-\d{2}-\d{2}-\.?\d+$/', $articleParam)) {
 				$articlePath = $articleDirectory . '/' . str_replace('-', '/', $articleParam) . '.txt';
@@ -273,4 +253,8 @@ if ($articleParam) {
     // No parameters, render the index
     renderIndex();
 }
+
+$timestamp = date('Y-m-d @ H:i:s');
+$elapsed = round((microtime(true) - $startTime) * 1000); // End timer
+echo "\n<!-- Served by PHP " . phpversion() . " on $timestamp in $elapsed ms -->";
 ?>
