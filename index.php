@@ -84,8 +84,8 @@ function renderIndex($message = '') {
                 $relativePath = str_replace([$articleDirectory, '.txt'], '', $article['path']);
 
                 //$url = '/?article=' . str_replace('/', '-', substr(trim($relativePath, '/'), 1));
-								$url = '/?article=' . str_replace('/', '-', trim($relativePath, '/\\'));
-								$url = str_replace('\\', '-', $url); // Needed for Windows localhost mode
+                $url = '/?article=' . str_replace('/', '-', trim($relativePath, '/\\'));
+                $url = str_replace('\\', '-', $url); // Needed for Windows localhost mode
 
                 $html .= '        <li><a href="' . $url . '">';
                 $html .= '<span class="publish-date">(' . date('M d', strtotime($article['date'])) . ')</span> | ';
