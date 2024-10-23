@@ -83,7 +83,8 @@ function renderIndex($message = '') {
                 $article = $articles[$i];
                 $relativePath = str_replace([$articleDirectory, '.txt'], '', $article['path']);
 
-                $url = '/?article=' . str_replace('/', '-', substr(trim($relativePath, '/'), 1));
+                //$url = '/?article=' . str_replace('/', '-', substr(trim($relativePath, '/'), 1));
+								$url = '/?article=' . str_replace('/', '-', trim($relativePath, '/\\'));
 								$url = str_replace('\\', '-', $url); // Needed for Windows localhost mode
 
                 $html .= '        <li><a href="' . $url . '">';
