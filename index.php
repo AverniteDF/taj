@@ -1,7 +1,6 @@
 <?php
 
-// Start timer
-$startTime = microtime(true);
+$startTime = microtime(true); // Start timer
 
 // Define paths
 $articleDirectory = __DIR__ . '/articles';
@@ -19,15 +18,18 @@ $queryParams = $_GET;
 // Get the 'article' parameter from the URL
 $articleParam = isset($queryParams['article']) ? trim($queryParams['article']) : null;
 
+$showHidden = isset($queryParams['showall']);
+
 function loadFile($path) {
     return file_exists($path) ? file_get_contents($path) : null;
 }
 
 function getArticles($dir) {
+    global $showHidden;
     $articles = [];
     $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir));
     foreach ($iterator as $fileinfo) {
-        if ($fileinfo->isFile() && $fileinfo->getExtension() == 'txt' && $fileinfo->getFilename()[0] != '.') {
+        if ($fileinfo->isFile() && $fileinfo->getExtension() == 'txt' && ($showHidden || $fileinfo->getFilename()[0] != '.')) {
             $articles[] = $fileinfo->getPathname();
         }
     }
@@ -52,7 +54,6 @@ function getArticles($dir) {
     return $articles;
 }
 
-// Helper function to extract the date from the article path
 function getArticleDateFromPath($path) {
     // Assuming the path is in the format /articles/YYYY/MM/DD/#.txt
     // Example: /articles/2024/10/06/1.txt
@@ -63,7 +64,6 @@ function getArticleDateFromPath($path) {
     return '';
 }
 
-// Helper function to extract the file number from the article path
 function getArticleNumberFromPath($path) {
     // Assuming the file is named like 1.txt, 2.txt, etc.
     preg_match('/\/(\d+)\.txt$/', $path, $matches);
@@ -73,7 +73,7 @@ function getArticleNumberFromPath($path) {
 function getArticleMetadata($path) {
     //$content = file_get_contents($path);
 
-    // More efficient than reading entire article file
+    // More efficient than reading entire file
     $handle = fopen($path, 'r');
     $firstLines = '';
     if ($handle) {
@@ -115,7 +115,7 @@ function groupArticlesByMonth($articles) {
 }
 
 function renderIndex($message = '') {
-    global $articleDirectory, $indexFile;
+    global $articleDirectory, $indexFile, $showHidden;
 
     // Get all articles
     $articles = getArticles($articleDirectory);
@@ -125,15 +125,13 @@ function renderIndex($message = '') {
     $templateContent = loadFile($indexFile);
  
     if ($templateContent) {
-        if ($message) {
-            $templateContent = str_replace('<!-- (MESSAGE) -->', "<div style='color: orange; text-align: center; font-family: verdana; font-size: 1em; padding: 5px;'>\n    &#9888; $message &#9888;\n</div>", $templateContent);
-        }
+        $templateContent = str_replace('<!-- (MESSAGE) -->', $message ? "<div style='color: orange; text-align: center; font-family: verdana; font-size: 1em; padding: 5px;'>\n    &#9888; $message &#9888;\n</div>" : '', $templateContent);
 
         $html = '';
         foreach ($groupedArticles as $monthYear => $articles) {
-            $html = $html . "\n    <h3>$monthYear</h3>\n";
+            $html = $html . "\n        <h3>$monthYear</h3>\n";
 
-            $html = $html . "    <ul>\n";
+            $html = $html . "        <ul>\n";
 						for ($i = count($articles) - 1; $i >= 0; $i--) {
                 $article = $articles[$i];
                 $relativePath = str_replace([$articleDirectory, '.txt'], '', $article['path']);
@@ -141,15 +139,17 @@ function renderIndex($message = '') {
                 $url = '/?article=' . str_replace('/', '-', trim($relativePath, '/\\'));
                 $url = str_replace('\\', '-', $url); // Needed for Windows localhost mode
 
-                $html .= '        <li><a href="' . $url . '">';
+                $hidden = $showHidden && preg_match('/-\.\d+$/', $url);
+
+                $html .= '            <li' . ($hidden ? ' style="background-color: #eee;"' : '') . '><a href="' . $url . '">';
                 $html .= '<span class="publish-date">(' . date('M d', strtotime($article['date'])) . ')</span> | ';
                 $html .= htmlspecialchars($article['title']);
                 $html .= "</a></li>\n";
             }
-						$html .= '    </ul>';
+						$html .= '        </ul>';
         }
 				
-				echo str_replace('    <!-- (ARTICLE LINKS) -->', $html, $templateContent);
+				echo str_replace('        <!-- (ARTICLE LINKS) -->', $html, $templateContent);
     }
 		else {
         echo "Error: Index file not found.";
@@ -159,7 +159,6 @@ function renderIndex($message = '') {
 function renderArticle($articlePath) {
     global $articleTemplateDirectory, $styleDirectory, $authorDirectory, $defaultTemplate, $defaultStyle;
 
-    // Load the article content
     $articleContent = loadFile($articlePath);
     if (!$articleContent) {
         return false; // Article not found
@@ -224,37 +223,50 @@ function checkForUnrecognizedParams($recognizedParams, $queryParams) {
     foreach ($queryParams as $key => $value) {
         if (!in_array($key, $recognizedParams)) {
             renderIndex("Invalid parameter \"{$key}\"");
-            exit();
+            return true;
         }
     }
 }
 
-// Recognized parameters
-$recognizedParams = ['article', 'fnf'];
-
-checkForUnrecognizedParams($recognizedParams, $queryParams);
-
-// Determine what to serve
-if (isset($queryParams['fnf'])) // You will need to add "ErrorDocument 404 /index.php?fnf" to .htaccess file and restart Apache web server for this to work (Nginx uses "server { error_page 404 /index.php?fnf; }")
+if (!checkForUnrecognizedParams(['article', 'showall', 'fnf'], $queryParams))
 {
-    renderIndex('The resource you requested does not exist');
-} elseif ($articleParam) {
-    // Check if the article specifier has correct format
-		if (preg_match('/^\d{4}-\d{2}-\d{2}-\.?\d+$/', $articleParam)) {
-				$articlePath = $articleDirectory . '/' . str_replace('-', '/', $articleParam) . '.txt';
-        if (!renderArticle($articlePath)) {
-            // Article not found, render index with error message
-						renderIndex("The article \"$articleParam\" does not exist");
-        }
-    } else {
-        renderIndex("Invalid article specifier \"$articleParam\" expected format is \"YYYY-MM-DD-#\""); // Please prepend and append a "caution" symbol to the message
+    if (isset($queryParams['fnf'])) // Add "ErrorDocument 404 /index.php?fnf" to .htaccess file and restart Apache web server for this to work (Nginx uses "server { error_page 404 /index.php?fnf; }")
+    {
+        renderIndex('The resource you requested does not exist');
     }
-} else {
-    // No parameters, render the index
-    renderIndex();
+    elseif ($articleParam)
+    {
+        if (preg_match('/^\d{4}-\d{2}-\d{2}-\.?\d+$/', $articleParam)) // Check if the article specifier has correct format
+        {
+            $articlePath = $articleDirectory . '/' . str_replace('-', '/', $articleParam) . '.txt';
+            if (!renderArticle($articlePath))
+            {
+                renderIndex("The article \"$articleParam\" does not exist");
+            }
+        }
+        else
+        {
+            renderIndex("Invalid article specifier \"$articleParam\" expected format is \"YYYY-MM-DD-#\"");
+        }
+    }
+    else
+    {
+        renderIndex();
+    }
 }
 
-$timestamp = date('Y-m-d @ H:i:s');
+$serverSoftware = $_SERVER['SERVER_SOFTWARE'];
+$serverSoftware = (stripos($serverSoftware, 'apache') !== false ? 'Apache' : (stripos($serverSoftware, 'nginx') !== false ? 'Nginx' : '{Unknown}'));
+
+//$timestamp = date('Y-m-d @ H:i:s T') . date_default_timezone_get();
+$timestamp = date('Y-m-d H:i:s');
+
+$utcTimezone = new DateTimeZone(date_default_timezone_get());
+$estTimezone = new DateTimeZone('America/Toronto');
+$date = new DateTime($timestamp, $utcTimezone);
+$date->setTimezone($estTimezone);
+$timestamp = $date->format('Y-m-d @ H:i T');
+
 $elapsed = round((microtime(true) - $startTime) * 1000); // End timer
-echo "\n<!-- Served by PHP " . phpversion() . " on $timestamp in $elapsed ms -->";
+echo "\n\n<!-- Served by $serverSoftware Web Server & PHP " . phpversion() . " on $timestamp in $elapsed ms -->";
 ?>
