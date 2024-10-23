@@ -8,4 +8,4 @@ deployment:
     - /bin/cp -R templates $DEPLOYPATH
     - /bin/cp index.php $DEPLOYPATH
   ignore:
-    - *.html
+    - **.html
