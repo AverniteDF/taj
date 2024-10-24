@@ -1,10 +1,9 @@
+test.txt
 # Ignore all files that start with a period
 .*
 
 # Ignore all HTML files in the articles/ directory and its subdirectories
 /articles/**/*.html
-
-test.txt
 
 # Exceptions:
 # If you want to track some specific files that start with a period,
