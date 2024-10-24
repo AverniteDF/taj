@@ -1,6 +1,6 @@
 <?php
 
-$startTime = microtime(true); // Start timer
+$startTime = microtime(true); // Start timer!!
 
 // Define paths
 $articleDirectory = __DIR__ . '/articles';
