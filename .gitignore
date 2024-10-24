@@ -2,7 +2,7 @@
 .*
 
 # Ignore all HTML files in the articles/ directory and its subdirectories
-articles/**/*.html
+/articles/**/*.html
 
 # Exceptions:
 # If you want to track some specific files that start with a period,
