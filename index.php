@@ -228,9 +228,9 @@ function checkForUnrecognizedParams($recognizedParams, $queryParams) {
     }
 }
 
-if (!checkForUnrecognizedParams(['article', 'showall', 'fnf'], $queryParams))
+if (!checkForUnrecognizedParams(['article', 'showall', 'rnf'], $queryParams))
 {
-    if (isset($queryParams['fnf'])) // Add "ErrorDocument 404 /index.php?fnf" to .htaccess file and restart Apache web server for this to work (Nginx uses "server { error_page 404 /index.php?fnf; }")
+    if (isset($queryParams['rnf'])) // Add "ErrorDocument 404 /index.php?rnf" to .htaccess file and restart Apache web server for this to work (Nginx uses "server { error_page 404 /index.php?rnf; }")
     {
         renderIndex('The resource you requested does not exist');
     }
