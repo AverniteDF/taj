@@ -267,6 +267,7 @@ $date = new DateTime($timestamp, $utcTimezone);
 $date->setTimezone($estTimezone);
 $timestamp = $date->format('Y-m-d @ H:i T');
 
-$elapsed = round((microtime(true) - $startTime) * 1000); // End timer
+//$elapsed = round((microtime(true) - $startTime) * 1000); // End timer
+$elapsed = sprintf("%.2g", (microtime(true) - $startTime) * 1000); // End timer
 echo "\n\n<!-- Served by $serverSoftware Web Server & PHP " . phpversion() . " on $timestamp in $elapsed ms -->";
 ?>
