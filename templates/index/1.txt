@@ -97,7 +97,16 @@
         footer p {
             margin: 0;
         }
-
+        .proud-link {
+            color: inherit;
+            text-decoration: none;
+        }
+        .proud-link:hover,
+        .proud-link:visited,
+        .proud-link:active {
+            color: inherit;
+            text-decoration: none;
+        }
         @media (max-width: 600px) {
             body {
                 padding: 10px;
@@ -117,9 +126,11 @@
 
 <!-- (MESSAGE) -->
 
-<header>
-    <h1>The Automated Journalist</h1>
-</header>
+<a href="/?about" class="proud-link">
+    <header>
+        <h1>The Automated Journalist</h1>
+    </header>
+</a>
 
 <div style="padding: 20px; background-color: #f4f4f9;">
     <main>
@@ -128,9 +139,11 @@
     </main>
 </div>
 
-<footer>
-    <p>&copy; 2024 The Automated Journalist | All rights reserved</p>
-</footer>
+<a href="/?about" class="proud-link">
+    <footer>
+        <p>&copy; 2024 The Automated Journalist | All rights reserved</p>
+    </footer>
+</a>
 
 </body>
 </html>

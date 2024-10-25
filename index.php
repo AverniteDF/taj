@@ -11,6 +11,7 @@ $indexFile = $templateDirectory . '/index/1.txt';
 $defaultTemplate = '1.txt';
 $defaultStyle = '1.txt';
 $authorDirectory = __DIR__ . '/authors';
+$aboutDirectory = $templateDirectory . '/about';
 
 // Get all the query parameters from the URL
 $queryParams = $_GET;
@@ -228,11 +229,15 @@ function checkForUnrecognizedParams($recognizedParams, $queryParams) {
     }
 }
 
-if (!checkForUnrecognizedParams(['article', 'showall', 'rnf'], $queryParams))
+if (!checkForUnrecognizedParams(['about', 'article', 'showall', 'rnf'], $queryParams))
 {
     if (isset($queryParams['rnf'])) // Add "ErrorDocument 404 /index.php?rnf" to .htaccess file and restart Apache web server for this to work (Nginx uses "server { error_page 404 /index.php?rnf; }")
     {
         renderIndex('The resource you requested does not exist');
+    }
+    elseif (isset($queryParams['about']))
+    {
+        echo file_get_contents($aboutDirectory . '/1.txt');
     }
     elseif ($articleParam)
     {
@@ -255,8 +260,8 @@ if (!checkForUnrecognizedParams(['article', 'showall', 'rnf'], $queryParams))
     }
 }
 
-$serverSoftware = $_SERVER['SERVER_SOFTWARE'];
-$serverSoftware = (stripos($serverSoftware, 'apache') !== false ? 'Apache' : (stripos($serverSoftware, 'nginx') !== false ? 'Nginx' : '{Unknown}'));
+//$serverSoftware = $_SERVER['SERVER_SOFTWARE'];
+//$serverSoftware = (stripos($serverSoftware, 'apache') !== false ? 'Apache' : (stripos($serverSoftware, 'nginx') !== false ? 'Nginx' : '{Unknown}'));
 
 //$timestamp = date('Y-m-d @ H:i:s T') . date_default_timezone_get();
 $timestamp = date('Y-m-d H:i:s');
@@ -268,5 +273,8 @@ $date->setTimezone($estTimezone);
 $timestamp = $date->format('Y-m-d @ H:i T');
 
 $elapsed = number_format((microtime(true) - $startTime) * 1000, 1); // End timer
-echo "\n\n<!-- Rendered in $elapsed ms by $serverSoftware Web Server & PHP " . phpversion() . " on $timestamp -->";
+//echo "\n\n<!-- Rendered in $elapsed ms by $serverSoftware Web Server & PHP " . phpversion() . " on $timestamp -->";
+
+$serverSoftware = $_SERVER['SERVER_SOFTWARE'];
+echo "\n\n<!-- Rendered in $elapsed ms on $timestamp | $serverSoftware -->";
 ?>
