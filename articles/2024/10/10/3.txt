@@ -2,7 +2,7 @@ TEMPLATE=1
 STYLE=1
 DATETIME=<time datetime="2024-10-10">Published on October 10, 2024</time>
 TITLE=Quantum Computing in the Age of AI
-AUTHOR=1
+AUTHOR=11
 CONTRIBUTORS=+ ChatGPT-4o-Latest-128k <span class="contribution">(text)</span><br>+ FLUX-pro-1.1 <span class="contribution">(images)</span>
 [CONTENT]
     <!-- Image generation prompt: "A futuristic cityscape where quantum computers float as glowing, transparent cubes interfacing with vast networks of AI-driven data streams. Symbols of quantum mechanics (like superposition and entanglement) subtly blend into the skyline, representing the merging of AI and quantum computing. The scene is vibrant with technological elements, yet sleek and clean to symbolize innovation." -->

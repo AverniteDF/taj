@@ -2,7 +2,7 @@ TEMPLATE=1
 STYLE=1
 DATETIME=<time datetime="2024-10-14">Published on October 14, 2024</time>
 TITLE=The Dawn of AGI: Humanity's Greatest and Final Invention?
-AUTHOR=1
+AUTHOR=11
 CONTRIBUTORS=+ ChatGPT-4o-Latest-128k <span class="contribution">(text)</span><br>+ FLUX-pro-1.1 <span class="contribution">(images)</span>
 [CONTENT]
     <!-- Image generation prompt: "A futuristic, humanoid AI figure emerging from a glowing matrix of data and circuits, with a backdrop of stars and a faint Earth horizon. The AI figure should appear both powerful and enigmatic, symbolizing intelligence beyond human comprehension." -->

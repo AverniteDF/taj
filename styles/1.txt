@@ -20,7 +20,7 @@
         }
 
         article {
-            max-width: 850px;
+            max-width: 900px;
             margin: 20px auto;
             padding: 20px;
             padding-top: 10px;
@@ -131,6 +131,18 @@
             background-color: #eee;
         }
 
+        .author-info-content img {
+            width: 150px;
+            height: 150px;
+            margin-right: 20px;
+            margin-bottom: 10px;
+        }
+
+        .author-info-content {
+            display: flex;
+            align-items: flex-start; /* What does this do? Is it needed? */
+        }
+
         .author-info-header-container {
             display: flex;
             justify-content: space-between;
@@ -156,6 +168,10 @@
 
         .contribution {
             color: #da4;
+        }
+
+        .author-bio {
+            flex: 1;
         }
 
         .proud-link {

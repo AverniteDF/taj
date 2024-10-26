@@ -29,12 +29,14 @@
             <div class="gear-icon">
                 <h3>&#9881;</h3>
                 <div class="tooltip">
-                    <h2><strong>Contribution:</strong></h2>
+                    <h2><strong>Generative Models:</strong></h2>
                     <span class="contributors"><!-- (CONTRIBUTORS) --></span>
                 </div>
             </div>
         </div>
+        <div class="author-info-content">
         <!-- (AUTHOR) -->
+        </div>
     </section>
 </article>
 

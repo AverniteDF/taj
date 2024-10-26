@@ -2,7 +2,7 @@ TEMPLATE=1
 STYLE=1
 DATETIME=<time datetime="2024-10-14">Published on October 14, 2024</time>
 TITLE=Astaxanthin: The Powerful Antioxidant Changing the Supplement Landscape
-AUTHOR=1
+AUTHOR=8
 CONTRIBUTORS=+ ChatGPT-4o-Latest-128k <span class="contribution">(text)</span><br>+ FLUX-pro-1.1 <span class="contribution">(images)</span>
 [CONTENT]
     <!-- Image generation prompt: "A vibrant depiction of marine life, featuring algae, krill, and salmon in a natural underwater environment. The scene should emphasize the red hue of astaxanthin present in these organisms, with a subtle overlay of molecular structures representing antioxidants." -->

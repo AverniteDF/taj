@@ -10,8 +10,9 @@ $styleDirectory = __DIR__ . '/styles';
 $indexFile = $templateDirectory . '/index/1.txt';
 $defaultTemplate = '1.txt';
 $defaultStyle = '1.txt';
-$authorDirectory = __DIR__ . '/authors';
+$membersDirectory = __DIR__ . '/members';
 $aboutDirectory = $templateDirectory . '/about';
+$emailsDirectory = $templateDirectory . '/email';
 
 // Get all the query parameters from the URL
 $queryParams = $_GET;
@@ -21,9 +22,10 @@ $articleParam = isset($queryParams['article']) ? trim($queryParams['article']) :
 
 $showHidden = isset($queryParams['showall']);
 
-function loadFile($path) {
-    return file_exists($path) ? file_get_contents($path) : null;
-}
+function paramKey($key) { global $queryParams; return isset($queryParams[$key]); }
+function paramVal($key, $default = null) { global $queryParams; return $queryParams[$key] ? $queryParams[$key] : $default; }
+
+function loadFile($path) { return file_exists($path) ? file_get_contents($path) : null; }
 
 function getArticles($dir) {
     global $showHidden;
@@ -157,8 +159,18 @@ function renderIndex($message = '') {
     }
 }
 
+function getMemberPortrait($id) { global $membersDirectory; return loadFile($membersDirectory . '/' . $id . '/portrait.txt'); }
+function removeBoldAndItalics($html) { return $html ? str_replace(['<strong>', '</strong>', '<em>', '</em>'], null, $html) : $html; }
+
+function getMemberBio($id, $forArticle)
+{
+    global $membersDirectory;
+    $order = $forArticle ? ['bio.txt', 'about.txt'] : ['about.txt', 'bio.txt'];
+    return removeBoldAndItalics(file_exists($membersDirectory . '/' . $id . '/' . $order[0]) ? file_get_contents($membersDirectory . '/' . $id . '/' . $order[0]) : loadFile($membersDirectory . '/' . $id . '/' . $order[1]));
+}
+
 function renderArticle($articlePath) {
-    global $articleTemplateDirectory, $styleDirectory, $authorDirectory, $defaultTemplate, $defaultStyle;
+    global $articleTemplateDirectory, $styleDirectory, $membersDirectory, $defaultTemplate, $defaultStyle;
 
     $articleContent = loadFile($articlePath);
     if (!$articleContent) {
@@ -193,7 +205,11 @@ function renderArticle($articlePath) {
     $styleContent = loadFile($styleDirectory . '/' . $fields['style']);
 
     // Load the author bio
-    $authorBio = loadFile($authorDirectory . '/' . $fields['author'] . '/bio.txt');
+    $authorId = $fields['author'];
+    $authorBio = "            <div class=\"author-bio\">" . getMemberBio($fields['author'], true) . '</div>';
+    $authorPortrait = loadFile($membersDirectory . '/' . $fields['author'] . '/portrait.txt');
+    //if ($authorPortrait) { $authorBio = "<a class=\"proud-link\" href=\"/?about\">" . $authorPortrait . $authorBio . '</a>'; }
+    if ($authorPortrait) { $authorBio = '    ' . "<a class=\"proud-link\" href=\"/?about#m$authorId\">" . $authorPortrait . '</a>' . "            \n" . $authorBio; }
 
     // Substitute placeholders in the template
     $output = str_replace(
@@ -229,35 +245,22 @@ function checkForUnrecognizedParams($recognizedParams, $queryParams) {
     }
 }
 
-if (!checkForUnrecognizedParams(['about', 'article', 'showall', 'rnf'], $queryParams))
+if (!checkForUnrecognizedParams(['about', 'article', 'showall', 'email', 'rnf'], $queryParams))
 {
-    if (isset($queryParams['rnf'])) // Add "ErrorDocument 404 /index.php?rnf" to .htaccess file and restart Apache web server for this to work (Nginx uses "server { error_page 404 /index.php?rnf; }")
-    {
-        renderIndex('The resource you requested does not exist');
-    }
-    elseif (isset($queryParams['about']))
-    {
-        echo file_get_contents($aboutDirectory . '/1.txt');
-    }
+    // Add "ErrorDocument 404 /index.php?rnf" to .htaccess file and restart Apache web server for this to work (Nginx uses "server { error_page 404 /index.php?rnf; }")
+    if (paramKey('rnf')) { renderIndex('The resource you requested does not exist'); }
+    elseif (paramKey('about')) { include($aboutDirectory . '/1.txt'); }
+    elseif (paramKey('email')) { echo file_get_contents($emailsDirectory . '/' . paramVal('email', 1) . '.html'); }
     elseif ($articleParam)
     {
         if (preg_match('/^\d{4}-\d{2}-\d{2}-\.?\d+$/', $articleParam)) // Check if the article specifier has correct format
         {
             $articlePath = $articleDirectory . '/' . str_replace('-', '/', $articleParam) . '.txt';
-            if (!renderArticle($articlePath))
-            {
-                renderIndex("The article \"$articleParam\" does not exist");
-            }
+            if (!renderArticle($articlePath)) renderIndex("The article \"$articleParam\" does not exist");
         }
-        else
-        {
-            renderIndex("Invalid article specifier \"$articleParam\" expected format is \"YYYY-MM-DD-#\"");
-        }
+        else { renderIndex("Invalid article specifier \"$articleParam\" expected format is \"YYYY-MM-DD-#\""); }
     }
-    else
-    {
-        renderIndex();
-    }
+    else { renderIndex(); }
 }
 
 //$serverSoftware = $_SERVER['SERVER_SOFTWARE'];

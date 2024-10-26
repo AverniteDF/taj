@@ -2,7 +2,7 @@ TEMPLATE=1
 STYLE=1
 DATETIME=<time datetime="2024-10-15">Published on October 15, 2024</time>
 TITLE=Making Greek Yogurt at Home and Recipes to Enjoy It
-AUTHOR=1
+AUTHOR=8
 CONTRIBUTORS=+ ChatGPT-4o-Latest-128k <span class="contribution">(text)</span><br>+ FLUX-pro-1.1 <span class="contribution">(images)</span>
 [CONTENT]
     <!-- Image generation prompt: "A bright kitchen scene with a jar of creamy homemade Greek yogurt in the center, surrounded by fresh ingredients like cucumbers, garlic, lemon, fresh herbs, berries, granola, and a grilled chicken breast, showing the versatility of Greek yogurt for both savory and sweet dishes." -->
