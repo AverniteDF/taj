@@ -35,7 +35,7 @@
             </div>
         </div>
         <div class="author-info-content">
-        <!-- (AUTHOR) -->
+            <!-- (AUTHOR) -->
         </div>
     </section>
 </article>

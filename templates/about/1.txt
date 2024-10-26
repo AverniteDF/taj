@@ -136,114 +136,114 @@
         </div>
 
         <div class="team-member" id="m1">
-            <?php echo getMemberPortrait(1); ?>
+            <?php echoln(getMemberPortrait(1)); ?>
             <div class="team-member-info">
                 <h2>Robert Hewitt</h2>
-                <?php echo getMemberBio(1, false); ?>
+                <?php echoln(getMemberBio(1, false)); ?>
             </div>
         </div>
 
         <div class="team-member" id="m2">
-            <?php echo getMemberPortrait(2); ?>
+            <?php echoln(getMemberPortrait(2)); ?>
             <div class="team-member-info">
                 <h2>Sofia Martinez</h2>
-                <?php echo getMemberBio(2, false); ?>
+                <?php echoln(getMemberBio(2, false)); ?>
             </div>
         </div>
 
         <div class="team-member" id="m3">
-            <?php echo getMemberPortrait(3); ?>
+            <?php echoln(getMemberPortrait(3)); ?>
             <div class="team-member-info">
                 <h2>Sarah Thompson</h2>
-                <?php echo getMemberBio(3, false); ?>
+                <?php echoln(getMemberBio(3, false)); ?>
             </div>
         </div>
 
         <div class="team-member" id="m4">
-            <?php echo getMemberPortrait(4); ?>
+            <?php echoln(getMemberPortrait(4)); ?>
             <div class="team-member-info">
                 <h2>Michael O'Leary</h2>
-                <?php echo getMemberBio(4, false); ?>
+                <?php echoln(getMemberBio(4, false)); ?>
             </div>
         </div>
 
         <div class="team-member" id="m5">
-            <?php echo getMemberPortrait(5); ?>
+            <?php echoln(getMemberPortrait(5)); ?>
             <div class="team-member-info">
                 <h2>Vanessa Turner</h2>
-                <?php echo getMemberBio(5, false); ?>
+                <?php echoln(getMemberBio(5, false)); ?>
             </div>
         </div>
 
         <div class="team-member" id="m6">
-            <?php echo getMemberPortrait(6); ?>
+            <?php echoln(getMemberPortrait(6)); ?>
             <div class="team-member-info">
                 <h2>Ethan Marshall</h2>
-                <?php echo getMemberBio(6, false); ?>
+                <?php echoln(getMemberBio(6, false)); ?>
             </div>
         </div>
 
         <div class="team-member" id="m7">
-            <?php echo getMemberPortrait(7); ?>
+            <?php echoln(getMemberPortrait(7)); ?>
             <div class="team-member-info">
-                <h2>Dr. Jonathan Meyers</h2>
-                <?php echo getMemberBio(7, false); ?>
+                <h2>Dr. Craig Meyers</h2>
+                <?php echoln(getMemberBio(7, false)); ?>
             </div>
         </div>
 
         <div class="team-member" id="m8">
-            <?php echo getMemberPortrait(8); ?>
+            <?php echoln(getMemberPortrait(8)); ?>
             <div class="team-member-info">
-                <h2>Tara Williams</h2>
-                <?php echo getMemberBio(8, false); ?>
+                <h2>Tasha Williams</h2>
+                <?php echoln(getMemberBio(8, false)); ?>
             </div>
         </div>
 
         <div class="team-member" id="m9">
-            <?php echo getMemberPortrait(9); ?>
+            <?php echoln(getMemberPortrait(9)); ?>
             <div class="team-member-info">
                 <h2>Dr. Raj Patel</h2>
-                <?php echo getMemberBio(9, false); ?>
+                <?php echoln(getMemberBio(9, false)); ?>
             </div>
         </div>
 
         <div class="team-member" id="m10">
-            <?php echo getMemberPortrait(10); ?>
+            <?php echoln(getMemberPortrait(10)); ?>
             <div class="team-member-info">
                 <h2>Lily Zhang</h2>
-                <?php echo getMemberBio(10, false); ?>
+                <?php echoln(getMemberBio(10, false)); ?>
             </div>
         </div>
 
         <div class="team-member" id="m11">
-            <?php echo getMemberPortrait(11); ?>
+            <?php echoln(getMemberPortrait(11)); ?>
             <div class="team-member-info">
                 <h2>Alan Parker</h2>
-                <?php echo getMemberBio(11, false); ?>
+                <?php echoln(getMemberBio(11, false)); ?>
             </div>
         </div>
 
         <div class="team-member" id="m12">
-            <?php echo getMemberPortrait(12); ?>
+            <?php echoln(getMemberPortrait(12)); ?>
             <div class="team-member-info">
                 <h2>Emma Brooks</h2>
-                <?php echo getMemberBio(12, false); ?>
+                <?php echoln(getMemberBio(12, false)); ?>
             </div>
         </div>
 
         <div class="team-member" id="m13">
-            <?php echo getMemberPortrait(13); ?>
+            <?php echoln(getMemberPortrait(13)); ?>
             <div class="team-member-info">
                 <h2>Alex Rivera</h2>
-                <?php echo getMemberBio(13, false); ?>
+                <?php echoln(getMemberBio(13, false)); ?>
             </div>
         </div>
 
         <div class="team-member" id="m14">
-            <?php echo getMemberPortrait(14); ?>
+            <?php echoln(getMemberPortrait(14)); ?>
             <div class="team-member-info">
                 <h2>Maya Gupta</h2>
-                <?php echo getMemberBio(14, false); ?>
+                <?php echoln(getMemberBio(14, false)); ?>
             </div>
         </div>
     </div>

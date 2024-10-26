@@ -159,14 +159,17 @@ function renderIndex($message = '') {
     }
 }
 
-function getMemberPortrait($id) { global $membersDirectory; return loadFile($membersDirectory . '/' . $id . '/portrait.txt'); }
+function echoln($html) { echo $html . "\n"; }
+function convertImages($html) { return paramKey('text') ? preg_replace('/\s+src\s*=\s*\"data:[^"]+"/', /*' src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR42mNgYGAAAAAEAAHI6uv5AAAAAElFTkSuQmCC"'*/' src="placeholder.png"', $html) : $html; }
+function getMemberPortrait($id) { global $membersDirectory; return convertImages(loadFile($membersDirectory . '/' . $id . '/portrait.txt')); }
 function removeBoldAndItalics($html) { return $html ? str_replace(['<strong>', '</strong>', '<em>', '</em>'], null, $html) : $html; }
 
 function getMemberBio($id, $forArticle)
 {
     global $membersDirectory;
     $order = $forArticle ? ['bio.txt', 'about.txt'] : ['about.txt', 'bio.txt'];
-    return removeBoldAndItalics(file_exists($membersDirectory . '/' . $id . '/' . $order[0]) ? file_get_contents($membersDirectory . '/' . $id . '/' . $order[0]) : loadFile($membersDirectory . '/' . $id . '/' . $order[1]));
+    $bio = file_exists($membersDirectory . '/' . $id . '/' . $order[0]) ? file_get_contents($membersDirectory . '/' . $id . '/' . $order[0]) : loadFile($membersDirectory . '/' . $id . '/' . $order[1]);
+    return $forArticle ? $bio : removeBoldAndItalics($bio);
 }
 
 function renderArticle($articlePath) {
@@ -198,18 +201,18 @@ function renderArticle($articlePath) {
     $fields['contributors'] = isset($matches[1]) ? trim($matches[1]) : '';
 
     // Extract content after [CONTENT]
-    $fields['content'] = preg_split('/\[CONTENT\]/', $articleContent)[1] ?? '';
+    $fields['content'] = preg_split('/\[CONTENT\]\s*/', $articleContent)[1] ?? '';
 
     // Load the template and style
     $templateContent = loadFile($articleTemplateDirectory . '/' . $fields['template']);
-    $styleContent = loadFile($styleDirectory . '/' . $fields['style']);
+    $styleContent = trim(loadFile($styleDirectory . '/' . $fields['style']));
 
     // Load the author bio
     $authorId = $fields['author'];
-    $authorBio = "            <div class=\"author-bio\">" . getMemberBio($fields['author'], true) . '</div>';
-    $authorPortrait = loadFile($membersDirectory . '/' . $fields['author'] . '/portrait.txt');
-    //if ($authorPortrait) { $authorBio = "<a class=\"proud-link\" href=\"/?about\">" . $authorPortrait . $authorBio . '</a>'; }
-    if ($authorPortrait) { $authorBio = '    ' . "<a class=\"proud-link\" href=\"/?about#m$authorId\">" . $authorPortrait . '</a>' . "            \n" . $authorBio; }
+    $authorPortrait = loadFile($membersDirectory . '/' . $authorId . '/portrait.txt');
+    $authorLinkedPortrait = $authorPortrait ? "<a class=\"proud-link\" href=\"/?about#m$authorId\">" . $authorPortrait . '</a>' : '';
+    $authorBio = "<div class=\"author-bio\">" . getMemberBio($authorId, true) . '</div>';
+    $authorInfoContent = trim($authorLinkedPortrait . "\n            " . $authorBio);
 
     // Substitute placeholders in the template
     $output = str_replace(
@@ -226,13 +229,13 @@ function renderArticle($articlePath) {
             $styleContent,
             $fields['datetime'],
             $fields['content'],
-            $authorBio,
+            $authorInfoContent,
             $fields['contributors'],
         ],
         $templateContent
     );
 
-    echo $output;
+    echo convertImages($output);
     return true;
 }
 
@@ -245,7 +248,7 @@ function checkForUnrecognizedParams($recognizedParams, $queryParams) {
     }
 }
 
-if (!checkForUnrecognizedParams(['about', 'article', 'showall', 'email', 'rnf'], $queryParams))
+if (!checkForUnrecognizedParams(['about', 'article', 'showall', 'text', 'email', 'rnf'], $queryParams))
 {
     // Add "ErrorDocument 404 /index.php?rnf" to .htaccess file and restart Apache web server for this to work (Nginx uses "server { error_page 404 /index.php?rnf; }")
     if (paramKey('rnf')) { renderIndex('The resource you requested does not exist'); }
