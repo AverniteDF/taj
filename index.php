@@ -1,6 +1,6 @@
 <?php
 
-$startTime = microtime(true); // Start timer
+$startTime = microtime(true); // Start timer for page render
 
 // Define paths
 $articleDirectory = __DIR__ . '/articles';
@@ -14,20 +14,15 @@ $membersDirectory = __DIR__ . '/members';
 $aboutDirectory = $templateDirectory . '/about';
 $emailsDirectory = $templateDirectory . '/email';
 
-// Get all the query parameters from the URL
-$queryParams = $_GET;
-
-// Get the 'article' parameter from the URL
+$queryParams = $_GET; // Get all the query parameters from the URL
 $articleParam = isset($queryParams['article']) ? trim($queryParams['article']) : null;
-
 $showHidden = isset($queryParams['showall']);
 
 function paramKey($key) { global $queryParams; return isset($queryParams[$key]); }
 function paramVal($key, $default = null) { global $queryParams; return $queryParams[$key] ? $queryParams[$key] : $default; }
-
 function loadFile($path) { return file_exists($path) ? file_get_contents($path) : null; }
 
-function getArticles($dir) {
+function getArticlePaths($dir) {
     global $showHidden;
     $articles = [];
     $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir));
@@ -120,11 +115,9 @@ function groupArticlesByMonth($articles) {
 function renderIndex($message = '') {
     global $articleDirectory, $indexFile, $showHidden;
 
-    // Get all articles
-    $articles = getArticles($articleDirectory);
+    $articles = getArticlePaths($articleDirectory); // Get paths for all articles
     $groupedArticles = groupArticlesByMonth($articles);
 
-    // Load the template
     $templateContent = loadFile($indexFile);
  
     if ($templateContent) {
@@ -161,15 +154,38 @@ function renderIndex($message = '') {
 
 function echoln($html) { echo $html . "\n"; }
 function convertImages($html) { return paramKey('text') ? preg_replace('/\s+src\s*=\s*\"data:[^"]+"/', /*' src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR42mNgYGAAAAAEAAHI6uv5AAAAAElFTkSuQmCC"'*/' src="placeholder.png"', $html) : $html; }
-function getMemberPortrait($id) { global $membersDirectory; return convertImages(loadFile($membersDirectory . '/' . $id . '/portrait.txt')); }
-function removeBoldAndItalics($html) { return $html ? str_replace(['<strong>', '</strong>', '<em>', '</em>'], null, $html) : $html; }
-
-function getMemberBio($id, $forArticle)
+//function getMemberPortrait($id) { global $membersDirectory; return convertImages(loadFile($membersDirectory . '/' . $id . '/portrait.txt')); }
+function getMemberPortrait($id)
 {
     global $membersDirectory;
-    $order = $forArticle ? ['bio.txt', 'about.txt'] : ['about.txt', 'bio.txt'];
-    $bio = file_exists($membersDirectory . '/' . $id . '/' . $order[0]) ? file_get_contents($membersDirectory . '/' . $id . '/' . $order[0]) : loadFile($membersDirectory . '/' . $id . '/' . $order[1]);
-    return $forArticle ? $bio : removeBoldAndItalics($bio);
+    $info = getMemberInfo($id);
+    return convertImages(str_replace('<img src', '<img alt="' . $info['name'] . ', ' . $info['title'] . '" src', loadFile($membersDirectory . '/' . $id . '/portrait.txt')));
+}
+
+function removeBoldAndItalics($html) { return $html ? str_replace(['<strong>', '</strong>', '<em>', '</em>'], null, $html) : $html; }
+
+function getMemberInfo($id)
+{
+    global $membersDirectory;
+
+    $info = loadFile($membersDirectory . '/' . $id . '/info.txt') or die('Unable to read member info file');
+
+    $fields = [];
+    preg_match('/NAME=(.+)/', $info, $matches);
+    $fields['name'] = isset($matches[1]) ? trim($matches[1]) : 'Name not specified';
+    preg_match('/TITLE=(.+)/', $info, $matches);
+    $fields['title'] = isset($matches[1]) ? trim($matches[1]) : 'Title not specified';
+
+    $fields['role'] = null; $fields['bio'] = null;
+    $blocks = preg_split('/\[/', $info);
+    for ($i = 1; $i < count($blocks); $i++) if (substr($blocks[$i], 0, 5) == 'ROLE]') $fields['role'] = trim(substr($blocks[$i], 5)); elseif (substr($blocks[$i], 0, 4) == 'BIO]') $fields['bio'] = trim(substr($blocks[$i], 4));
+    
+    if (!$fields['role']) $fields['role'] = $fields['bio'] ? $fields['bio'] : 'Role not specified';
+    if (!$fields['bio']) $fields['bio'] = $fields['role'] ? $fields['role'] : 'Bio not specified';
+		
+		$fields['role'] = removeBoldAndItalics($fields['role']);
+
+    return $fields;
 }
 
 function renderArticle($articlePath) {
@@ -201,7 +217,7 @@ function renderArticle($articlePath) {
     $fields['contributors'] = isset($matches[1]) ? trim($matches[1]) : '';
 
     // Extract content after [CONTENT]
-    $fields['content'] = preg_split('/\[CONTENT\]\s*/', $articleContent)[1] ?? '';
+    $fields['content'] = trim(preg_split('/\[CONTENT\]\s*/', $articleContent)[1] ?? '');
 
     // Load the template and style
     $templateContent = loadFile($articleTemplateDirectory . '/' . $fields['template']);
@@ -209,9 +225,14 @@ function renderArticle($articlePath) {
 
     // Load the author bio
     $authorId = $fields['author'];
-    $authorPortrait = loadFile($membersDirectory . '/' . $authorId . '/portrait.txt');
+    //$authorPortrait = loadFile($membersDirectory . '/' . $authorId . '/portrait.txt');
+    $authorPortrait = getMemberPortrait($authorId);
     $authorLinkedPortrait = $authorPortrait ? "<a class=\"proud-link\" href=\"/?about#m$authorId\">" . $authorPortrait . '</a>' : '';
-    $authorBio = "<div class=\"author-bio\">" . getMemberBio($authorId, true) . '</div>';
+    $authorInfo = getMemberInfo($authorId);
+    //$authorBio = '<div class="author-bio">' . $authorInfo['bio'] . '</div>';
+    //$authorBio = '<div class="author-bio">' . '<div class="author-info-header-container" style="margin-top: 15px;"><h3 style="margin: 0; Xbackground-color: orange;">' . $authorInfo['name'] . '</h3><div class="gear-icon"><h3>&#9881;</h3><div class="tooltip"><h2><strong>Generative Models:</strong></h2><span class="contributors"><!-- (CONTRIBUTORS) --></span></div></div></div><h4 style="margin: 0; margin-top: 3px; color: #555;">' . $authorInfo['title'] . '</h4>' . $authorInfo['bio'] . '</div>';
+    $authorBio = '<div class="author-bio">' . "\n" . '                <div class="author-info-header-container">' . "\n" . '                    <div></div>' . "\n" . '                    <div class="gear-icon">' . "\n" . '                        <h3>&#9881;</h3>' . "\n" . '                        <div class="tooltip">' . "\n" . '                            <h2><strong>Generative Models:</strong></h2>' . "\n" . '                            <span class="contributors"><!-- (CONTRIBUTORS) --></span>' . "\n" . '                        </div>' . "\n" . '                    </div>' . "\n" . '                </div>' . "\n" . '                <h3 style="margin: 0; margin-top: -15px;">' . $authorInfo['name'] . '</h3>' . "\n" . '                <h4 style="margin: 0; margin-top: 3px; margin-bottom: 16px; color: #666;">' . $authorInfo['title'] . '</h4>' . "\n" . '                ' . $authorInfo['bio'] . "\n" . '            </div>';
+
     $authorInfoContent = trim($authorLinkedPortrait . "\n            " . $authorBio);
 
     // Substitute placeholders in the template
@@ -278,7 +299,7 @@ $date = new DateTime($timestamp, $utcTimezone);
 $date->setTimezone($estTimezone);
 $timestamp = $date->format('Y-m-d @ H:i T');
 
-$elapsed = number_format((microtime(true) - $startTime) * 1000, 1); // End timer
+$elapsed = number_format((microtime(true) - $startTime) * 1000, 1); // End timer for page render
 //echo "\n\n<!-- Rendered in $elapsed ms by $serverSoftware Web Server & PHP " . phpversion() . " on $timestamp -->";
 
 $serverSoftware = $_SERVER['SERVER_SOFTWARE'];

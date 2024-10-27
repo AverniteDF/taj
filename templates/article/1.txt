@@ -24,16 +24,6 @@
     <!-- (CONTENT) -->
 
     <section class="author-info">
-        <div class="author-info-header-container">
-            <div><h3>About the Author</h3></div>
-            <div class="gear-icon">
-                <h3>&#9881;</h3>
-                <div class="tooltip">
-                    <h2><strong>Generative Models:</strong></h2>
-                    <span class="contributors"><!-- (CONTRIBUTORS) --></span>
-                </div>
-            </div>
-        </div>
         <div class="author-info-content">
             <!-- (AUTHOR) -->
         </div>

@@ -1,1 +1,5 @@
+NAME=Alex Rivera
+TITLE=Senior Writer - Space & Futurism
+[ROLE]
+[BIO]
 <p><strong>Alex Rivera</strong> is our resident futurist, exploring the possibilities of space colonization, AI ethics, and the future of human society. With a deep interest in speculative fiction and emerging technologies, Alex writes thought-provoking articles that challenge readers to think about the long-term implications of technological progress. His work often overlaps with both science and tech, making him a versatile contributor to The Automated Journalist.</p>

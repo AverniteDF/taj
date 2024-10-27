@@ -1,0 +1,5 @@
+NAME=Olivia Carter
+TITLE=Political Science & AI Governance Contributor
+[ROLE]
+[BIO]
+<p><strong>Olivia Carter</strong> brings her deep expertise in political science to The Automated Journalist, with a focus on the intersection of AI and politics. With a background in global governance and public policy, Olivia contributes thought-provoking articles that explore the ethical, regulatory, and societal implications of artificial intelligence. From the challenges of AI governance to the role of AI in shaping political discourse, Olivia’s writing offers readers a nuanced understanding of how technology intersects with policy. She often dives into topics like AI-driven decision-making, digital privacy, and the impact of machine learning on democracy.</p>

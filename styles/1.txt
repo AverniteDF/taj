@@ -114,6 +114,7 @@
 
         footer p {
             margin: 0;
+            font-size: 1em;
         }
 
         .published-info time {
@@ -132,8 +133,8 @@
         }
 
         .author-info-content img {
-            width: 150px;
-            height: 150px;
+            width: 200px;
+            height: 200px;
             margin-right: 20px;
             margin-bottom: 10px;
         }

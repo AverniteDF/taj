@@ -1,0 +1,5 @@
+NAME=Vanessa Turner
+TITLE=Head of Research & Development
+[ROLE]
+<p>Vanessa Turner leads the R&D efforts at The Automated Journalist, constantly experimenting with new AI models and tools to improve the quality and creativity of our content. With a background in computer science and AI research, Vanessa is always on the cutting edge of innovation. Her work ensures that the technology we use is state-of-the-art, pushing the boundaries of what’s possible in AI-generated journalism.</p>
+[BIO]

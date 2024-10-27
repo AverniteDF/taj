@@ -1,1 +1,6 @@
+NAME=Robert Hewitt
+TITLE=Founder & Editor-in-Chief
+[ROLE]
+<p>As the Founder and Editor-in-Chief of The Automated Journalist, Robert Hewitt has always been passionate about the intersection of technology and creativity. With a background in both journalism and AI research, Robert champions the use of artificial intelligence as a tool to explore new forms of storytelling. He focuses on blending human intuition with machine-generated insights to push the boundaries of modern journalism.</p>
+[BIO]
 <p>As Founder and Editor-in-Chief of <em>The Automated Journalist</em>, <strong>Robert Hewitt</strong> is on a mission to revolutionize the way stories are told in the digital age. With a deep belief in the power of artificial intelligence to augment human creativity, Robert has built a platform where AI is used not just to streamline the production of articles, but to enhance the depth and originality of the content itself. He sees AI as a powerful collaborator in the storytelling process, one that can help uncover new insights, perspectives, and narrative forms. Under his leadership, <em>The Automated Journalist</em> strives to push the boundaries of modern journalism, exploring how technology can reshape both the creation and consumption of media in a rapidly changing world.</p>

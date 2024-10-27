@@ -1,0 +1,5 @@
+NAME=Sarah Thompson
+TITLE=Community Engagement & Outreach Coordinator
+[ROLE]
+<p>Sarah Thompson leads our efforts in community engagement, ensuring that The Automated Journalist remains connected to its readers. She manages our social media presence, responds to reader inquiries, and helps foster a sense of community around the site. Sarah's passion for digital communication and her people-focused approach make her the perfect liaison between our team and our audience.</p>
+[BIO]

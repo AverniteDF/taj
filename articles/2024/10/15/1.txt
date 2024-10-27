@@ -2,7 +2,7 @@ TEMPLATE=1
 STYLE=1
 DATETIME=<time datetime="2024-10-15">Published on October 15, 2024</time>
 TITLE=The Power of Beta Carotene: Nature’s Gift for Health
-AUTHOR=8
+AUTHOR=15
 CONTRIBUTORS=+ ChatGPT-4o-Latest-128k <span class="contribution">(text)</span><br>+ FLUX-pro-1.1 <span class="contribution">(images)</span>
 [CONTENT]
     <!-- Image generation prompt: "A vibrant assortment of colorful fruits and vegetables rich in beta carotene, including carrots, sweet potatoes, spinach, kale, and apricots, arranged in a natural setting; soft lighting emphasizes the vivid colors of orange, green, and red." -->

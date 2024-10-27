@@ -1,0 +1,5 @@
+NAME=Lily Zhang
+TITLE=Design & Visual Content Director
+[ROLE]
+<p>Lily Zhang is the creative force behind the visuals that accompany our articles. From AI-generated images to custom infographics, Lily ensures that our content is not only informative but visually engaging. With a background in digital art and graphic design, she brings a unique blend of creativity and technical skill to the team. Lily also collaborates with the writers to ensure that the visual elements of the site complement the storytelling, making for a seamless reader experience.</p>
+[BIO]

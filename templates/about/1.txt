@@ -59,8 +59,8 @@
             padding: 20px;
         }
         .team-member img {
-            width: 150px;
-            height: 150px;
+            width: 200px;
+            height: 200px;
             /*border-radius: 50%;
             object-fit: cover;*/
             border-radius: 8px;
@@ -74,6 +74,13 @@
             font-size: 1.5em;
             color: #333;
             margin-bottom: 10px;
+        }
+        .team-member h3 {
+            margin: 0;
+            font-size: 1.05em;
+            color: #555;
+            margin-top: -8px;
+            margin-bottom: 15px;
         }
         .team-member p {
             margin: 0;
@@ -89,6 +96,7 @@
         }
         footer p {
             margin: 0;
+            font-size: 1em;
         }
         .proud-link {
             color: inherit;
@@ -134,118 +142,17 @@
             <h2 style="margin: 5px; text-align: center;">About Us</h2>
             <p>At <strong>The Automated Journalist</strong>, we believe in the power of artificial intelligence to revolutionize storytelling and content creation. Our mission is to leverage cutting-edge AI technologies to produce engaging, informative, and thought-provoking articles on topics like health, wellness, technology, space exploration, and more. By blending human editorial oversight with AI-generated content, we aim to create a platform where stories are not only informative but also innovative, offering readers fresh perspectives on the issues that matter most.</p>
         </div>
+<?php for ($i = 1; $i < 17; $i++) { if (!file_exists("members/$i/info.txt")) continue; ?>
 
-        <div class="team-member" id="m1">
-            <?php echoln(getMemberPortrait(1)); ?>
+        <div class="team-member" <?php echo 'id="m' . ($id = $i) . '"'; ?>>
+            <?php echoln(getMemberPortrait($id)); ?>
             <div class="team-member-info">
-                <h2>Robert Hewitt</h2>
-                <?php echoln(getMemberBio(1, false)); ?>
+                <h2><?php $info = getMemberInfo($id); echo $info['name']/* . "($i)"*/; ?></h2>
+                <h3><?php echo $info['title']; ?></h3>
+                <?php echoln($info['role']); ?>
             </div>
         </div>
-
-        <div class="team-member" id="m2">
-            <?php echoln(getMemberPortrait(2)); ?>
-            <div class="team-member-info">
-                <h2>Sofia Martinez</h2>
-                <?php echoln(getMemberBio(2, false)); ?>
-            </div>
-        </div>
-
-        <div class="team-member" id="m3">
-            <?php echoln(getMemberPortrait(3)); ?>
-            <div class="team-member-info">
-                <h2>Sarah Thompson</h2>
-                <?php echoln(getMemberBio(3, false)); ?>
-            </div>
-        </div>
-
-        <div class="team-member" id="m4">
-            <?php echoln(getMemberPortrait(4)); ?>
-            <div class="team-member-info">
-                <h2>Michael O'Leary</h2>
-                <?php echoln(getMemberBio(4, false)); ?>
-            </div>
-        </div>
-
-        <div class="team-member" id="m5">
-            <?php echoln(getMemberPortrait(5)); ?>
-            <div class="team-member-info">
-                <h2>Vanessa Turner</h2>
-                <?php echoln(getMemberBio(5, false)); ?>
-            </div>
-        </div>
-
-        <div class="team-member" id="m6">
-            <?php echoln(getMemberPortrait(6)); ?>
-            <div class="team-member-info">
-                <h2>Ethan Marshall</h2>
-                <?php echoln(getMemberBio(6, false)); ?>
-            </div>
-        </div>
-
-        <div class="team-member" id="m7">
-            <?php echoln(getMemberPortrait(7)); ?>
-            <div class="team-member-info">
-                <h2>Dr. Craig Meyers</h2>
-                <?php echoln(getMemberBio(7, false)); ?>
-            </div>
-        </div>
-
-        <div class="team-member" id="m8">
-            <?php echoln(getMemberPortrait(8)); ?>
-            <div class="team-member-info">
-                <h2>Tasha Williams</h2>
-                <?php echoln(getMemberBio(8, false)); ?>
-            </div>
-        </div>
-
-        <div class="team-member" id="m9">
-            <?php echoln(getMemberPortrait(9)); ?>
-            <div class="team-member-info">
-                <h2>Dr. Raj Patel</h2>
-                <?php echoln(getMemberBio(9, false)); ?>
-            </div>
-        </div>
-
-        <div class="team-member" id="m10">
-            <?php echoln(getMemberPortrait(10)); ?>
-            <div class="team-member-info">
-                <h2>Lily Zhang</h2>
-                <?php echoln(getMemberBio(10, false)); ?>
-            </div>
-        </div>
-
-        <div class="team-member" id="m11">
-            <?php echoln(getMemberPortrait(11)); ?>
-            <div class="team-member-info">
-                <h2>Alan Parker</h2>
-                <?php echoln(getMemberBio(11, false)); ?>
-            </div>
-        </div>
-
-        <div class="team-member" id="m12">
-            <?php echoln(getMemberPortrait(12)); ?>
-            <div class="team-member-info">
-                <h2>Emma Brooks</h2>
-                <?php echoln(getMemberBio(12, false)); ?>
-            </div>
-        </div>
-
-        <div class="team-member" id="m13">
-            <?php echoln(getMemberPortrait(13)); ?>
-            <div class="team-member-info">
-                <h2>Alex Rivera</h2>
-                <?php echoln(getMemberBio(13, false)); ?>
-            </div>
-        </div>
-
-        <div class="team-member" id="m14">
-            <?php echoln(getMemberPortrait(14)); ?>
-            <div class="team-member-info">
-                <h2>Maya Gupta</h2>
-                <?php echoln(getMemberBio(14, false)); ?>
-            </div>
-        </div>
+<?php } ?>
     </div>
 </div>
 

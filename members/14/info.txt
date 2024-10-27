@@ -1,0 +1,5 @@
+NAME=Joshua Bennett
+TITLE=Cognitive Philosopher & AI Ethics Analyst
+[ROLE]
+[BIO]
+<p><strong>Joshua Bennett</strong> is a philosopher with a deep passion for unraveling the enigma of consciousness and exploring the complex landscape of the philosophy of mind. With a dual background in cognitive science and philosophy, his writings engage with thought-provoking issues surrounding the nature of consciousness and its intersection with artificial intelligence. His work focuses on machine consciousness, the hard problem of consciousness, and the ethical implications of AI advancements. Joshua's contributions aim to challenge conventional perspectives on the mind and stimulate dialogue about the future of intelligent systems.</p>
