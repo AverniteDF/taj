@@ -112,7 +112,6 @@
             body {
                 padding: 10px;
             }
-
             header h1 {
                 font-size: 2em;
             }
@@ -122,7 +121,7 @@
             .team-member img {
                 margin: 0 auto 20px;
             }
-            .team-member-info h2 {
+            .team-member-info h2, .team-member-info h3 {
                 text-align: center;
             }
         }
