@@ -2,7 +2,7 @@ TEMPLATE=1
 STYLE=1
 DATETIME=<time datetime="2024-10-19">Published on October 19, 2024</time>
 TITLE=The Golden Spice: How Turmeric Enhances Health and Wellness
-AUTHOR=16
+AUTHOR=19
 CONTRIBUTORS=+ ChatGPT-4o-Latest-128k <span class="contribution">(text)</span><br>+ FLUX-pro-1.1 <span class="contribution">(images)</span>
 [CONTENT]
     <!-- Image generation prompt: "A vibrant still life of turmeric root, turmeric powder in a bowl, black peppercorns, fresh vegetables like carrots and potatoes, garlic cloves, coconut milk, and a small bottle of olive oil, all arranged on a rustic wooden countertop with a mortar and pestle in the background." -->

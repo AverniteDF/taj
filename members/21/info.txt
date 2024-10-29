@@ -1,0 +1,5 @@
+NAME=Dr. Lucas Reed
+TITLE=Bio-Engineering Specialist
+[ROLE]
+[BIO]
+<p><strong>Dr. Lucas Reed</strong> is a forward-thinking bio-engineer with a passion for exploring the ways biotechnology can reshape healthcare, sustainability, and even human evolution. With a PhD in Bio-Engineering and years of hands-on research in genetic engineering and biomaterials, Lucas is well-versed in the most cutting-edge developments in the field. His articles focus on the practical applications of bio-engineering, from lab-grown organs to CRISPR advancements, and how these technologies could radically alter both medicine and society.</p>

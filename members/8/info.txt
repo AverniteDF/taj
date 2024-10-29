@@ -1,5 +1,5 @@
-NAME=Lily Zhang
-TITLE=Design & Visual Content Director
+NAME=Michael O'Leary
+TITLE=Web Developer & SEO Specialist
 [ROLE]
-<p>Lily Zhang is the creative force behind the visuals that accompany our articles. From AI-generated images to custom infographics, Lily ensures that our content is not only informative but visually engaging. With a background in digital art and graphic design, she brings a unique blend of creativity and technical skill to the team. Lily also collaborates with the writers to ensure that the visual elements of the site complement the storytelling, making for a seamless reader experience.</p>
+<p>Michael O'Leary brings a dual expertise in web development and SEO to The Automated Journalist. As the Web Developer, he is responsible for maintaining the site's design, functionality, and user experience, ensuring that readers have a seamless and engaging experience. In his role as SEO Specialist, Michael optimizes the content for search engines, using data analytics and SEO best practices to increase the site’s visibility and audience reach. His technical skills coupled with his deep understanding of search algorithms make him a critical part of the company's digital growth strategy.</p>
 [BIO]

@@ -1,5 +1,5 @@
-NAME=Dr. Raj Patel
-TITLE=Chief Science Officer
+NAME=Lily Zhang
+TITLE=Design & Visual Content Director
 [ROLE]
-<p><strong>Dr. Raj Patel</strong> is our resident expert on space exploration, astrophysics, and cutting-edge scientific research. With a PhD in astrophysics, Raj brings a wealth of knowledge to his articles, which delve into topics like exoplanet discovery, quantum mechanics, and renewable energy technologies. His passion for pushing the boundaries of human knowledge is evident in every piece he contributes. Raj also collaborates with our tech editor on articles that explore the intersection of science and technology.</p>
+<p>Lily Zhang is the creative force behind the visuals that accompany our articles. From AI-generated images to custom infographics, Lily ensures that our content is not only informative but visually engaging. With a background in digital art and graphic design, she brings a unique blend of creativity and technical skill to the team. Lily also collaborates with the writers to ensure that the visual elements of the site complement the storytelling, making for a seamless reader experience.</p>
 [BIO]

@@ -18,6 +18,7 @@ $queryParams = $_GET; // Get all the query parameters from the URL
 $articleParam = isset($queryParams['article']) ? trim($queryParams['article']) : null;
 $showHidden = isset($queryParams['showall']);
 
+function space($n) { return str_repeat(' ', $n); }
 function paramKey($key) { global $queryParams; return isset($queryParams[$key]); }
 function paramVal($key, $default = null) { global $queryParams; return $queryParams[$key] ? $queryParams[$key] : $default; }
 function loadFile($path) { return file_exists($path) ? file_get_contents($path) : null; }
@@ -121,14 +122,14 @@ function renderIndex($message = '') {
     $templateContent = loadFile($indexFile);
  
     if ($templateContent) {
-        $templateContent = str_replace('<!-- (MESSAGE) -->', $message ? "<div style='color: orange; text-align: center; font-family: verdana; font-size: 1em; padding: 5px;'>\n    &#9888; $message &#9888;\n</div>" : '', $templateContent);
+        $templateContent = preg_replace('/<!-- \(MESSAGE\) -->\s*/', $message ? "<div style='color: orange; text-align: center; font-family: verdana; font-size: 1em; padding: 5px;'>&#9888; $message &#9888;</div>\n\n" : '', $templateContent);
 
-        $html = '';
+        $html = ''; $indent = 8;
         foreach ($groupedArticles as $monthYear => $articles) {
-            $html = $html . "\n        <h3>$monthYear</h3>\n";
+            $html = $html . "\n" . space($indent) . "<h3>$monthYear</h3>\n";
 
-            $html = $html . "        <ul>\n";
-						for ($i = count($articles) - 1; $i >= 0; $i--) {
+            $html = $html . space($indent) . "<ul>\n";
+            for ($i = count($articles) - 1; $i >= 0; $i--) {
                 $article = $articles[$i];
                 $relativePath = str_replace([$articleDirectory, '.txt'], '', $article['path']);
 
@@ -137,15 +138,15 @@ function renderIndex($message = '') {
 
                 $hidden = $showHidden && preg_match('/-\.\d+$/', $url);
 
-                $html .= '            <li' . ($hidden ? ' style="background-color: #eee;"' : '') . '><a href="' . $url . '">';
+                $html .= space($indent + 4) . '<li' . ($hidden ? ' style="background-color: #eee;"' : '') . '><a href="' . $url . '">';
                 $html .= '<span class="publish-date">(' . date('M d', strtotime($article['date'])) . ')</span> | ';
                 $html .= htmlspecialchars($article['title']);
                 $html .= "</a></li>\n";
             }
-						$html .= '        </ul>';
+						$html .= space($indent) . '</ul>';
         }
 				
-				echo str_replace('        <!-- (ARTICLE LINKS) -->', $html, $templateContent);
+				echo str_replace(space($indent) . '<!-- (ARTICLE LINKS) -->', $html, $templateContent);
     }
 		else {
         echo "Error: Index file not found.";
@@ -231,9 +232,10 @@ function renderArticle($articlePath) {
     $authorInfo = getMemberInfo($authorId);
     //$authorBio = '<div class="author-bio">' . $authorInfo['bio'] . '</div>';
     //$authorBio = '<div class="author-bio">' . '<div class="author-info-header-container" style="margin-top: 15px;"><h3 style="margin: 0; Xbackground-color: orange;">' . $authorInfo['name'] . '</h3><div class="gear-icon"><h3>&#9881;</h3><div class="tooltip"><h2><strong>Generative Models:</strong></h2><span class="contributors"><!-- (CONTRIBUTORS) --></span></div></div></div><h4 style="margin: 0; margin-top: 3px; color: #555;">' . $authorInfo['title'] . '</h4>' . $authorInfo['bio'] . '</div>';
-    $authorBio = '<div class="author-bio">' . "\n" . '                <div class="author-info-header-container">' . "\n" . '                    <div></div>' . "\n" . '                    <div class="gear-icon">' . "\n" . '                        <h3>&#9881;</h3>' . "\n" . '                        <div class="tooltip">' . "\n" . '                            <h2><strong>Generative Models:</strong></h2>' . "\n" . '                            <span class="contributors"><!-- (CONTRIBUTORS) --></span>' . "\n" . '                        </div>' . "\n" . '                    </div>' . "\n" . '                </div>' . "\n" . '                <h3 style="margin: 0; margin-top: -15px;">' . $authorInfo['name'] . '</h3>' . "\n" . '                <h4 style="margin: 0; margin-top: 3px; margin-bottom: 16px; color: #666;">' . $authorInfo['title'] . '</h4>' . "\n" . '                ' . $authorInfo['bio'] . "\n" . '            </div>';
+    $indent = 12;
+    $authorBio = '<div class="author-bio">' . "\n" . space($indent + 4) . '<div class="author-info-header-container">' . "\n" . space($indent + 8) . '<div></div>' . "\n" . space($indent + 8) . '<div class="gear-icon">' . "\n" . space($indent + 12) . '<h3>&#9881;</h3>' . "\n" . space($indent + 12) . '<div class="tooltip">' . "\n" . space($indent + 16) . '<h2><strong>Generative Models:</strong></h2>' . "\n" . space($indent + 16) . '<span class="contributors"><!-- (CONTRIBUTORS) --></span>' . "\n" . space($indent + 12) . '</div>' . "\n" . space($indent + 8) . '</div>' . "\n" . space($indent + 4) . '</div>' . "\n" . space($indent + 4) . '<h3 style="margin: 0; margin-top: -15px;">' . $authorInfo['name'] . '</h3>' . "\n" . space($indent + 4) . '<h4 style="margin: 0; margin-top: 3px; margin-bottom: 16px; color: #666;">' . $authorInfo['title'] . '</h4>' . "\n" . space($indent + 4) . $authorInfo['bio'] . "\n" . space($indent) . '</div>';
 
-    $authorInfoContent = trim($authorLinkedPortrait . "\n            " . $authorBio);
+    $authorInfoContent = trim($authorLinkedPortrait . "\n" . space($indent) . $authorBio);
 
     // Substitute placeholders in the template
     $output = str_replace(

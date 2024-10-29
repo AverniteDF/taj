@@ -1,5 +1,5 @@
-NAME=Michael O'Leary
-TITLE=Data Analyst & SEO Specialist
+NAME=Laura Collins
+TITLE=Human Resources Manager
 [ROLE]
-<p>Michael O'Leary oversees the data and analytics that drive The Automated Journalist. His role involves analyzing reader behavior, optimizing SEO strategies, and ensuring that the site's content reaches the widest possible audience. Michael's data-driven approach helps guide content decisions, making sure that we produce articles that both engage readers and perform well in search rankings.</p>
+As the HR Manager at The Automated Journalist, Laura Collins is responsible for nurturing the company's culture and ensuring the well-being of its employees. With an extensive background in talent acquisition, employee relations, and organizational development, Laura is passionate about creating a positive work environment where everyone feels valued. She oversees recruitment, staff development, and employee engagement, ensuring that The Automated Journalist attracts and retains top talent.
 [BIO]

@@ -1,5 +1,5 @@
-NAME=Alan Parker
-TITLE=Senior Technology Editor
+NAME=Ethan Marshall
+TITLE=Lead Data Scientist
 [ROLE]
+<p>Ethan Marshall is the number-cruncher behind the scenes, responsible for extracting insights from vast amounts of data. With a PhD in computer science and a background in machine learning, Ethan helps shape the AI models that power our content. His work ensures that our articles are backed by data-driven research and that the AI systems we use are continuously improving. Ethan's meticulous approach to data ensures that our content remains grounded in factual accuracy.</p>
 [BIO]
-<p><strong>Alan Parker</strong> is a tech enthusiast with a focus on AI, robotics, and the future of computing. His articles provide readers with insightful analyses of emerging technologies, from quantum computing to artificial general intelligence. Alan has a knack for breaking down complex technological advancements into digestible, easy-to-understand pieces, making him a favorite among tech-savvy readers and novices alike. He also manages the tech section of the site, ensuring we stay ahead of the curve in reporting on the latest breakthroughs.</p>

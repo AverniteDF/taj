@@ -1,5 +1,5 @@
-NAME=Emma Brooks
-TITLE=Senior AI & Automation Analyst
+NAME=Tyler Johnson
+TITLE=Network Administrator
 [ROLE]
+Tyler Johnson is the technical core of The Automated Journalist, responsible for maintaining the company's IT infrastructure, ensuring cybersecurity, and managing the network systems. With a background in network engineering and experience working with large-scale systems, Tyler ensures that the company’s digital assets are secure and accessible. His expertise in troubleshooting and optimizing network performance makes him an invaluable asset to the team.
 [BIO]
-<p><strong>Emma Brooks</strong> specializes in AI, automation, and the impact of machine learning on industries like manufacturing, logistics, and healthcare. Her articles are deep dives into the practical applications of AI in the physical world, exploring how intelligent systems are reshaping everything from industrial robotics to smart cities. Emma’s analytical writing is both informative and thought-provoking, offering readers a glimpse into the future of AI-driven automation.</p>

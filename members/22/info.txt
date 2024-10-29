@@ -1,0 +1,5 @@
+NAME=Dr. Alicia Green
+TITLE=Sociologist & AI-Society Researcher
+[ROLE]
+[BIO]
+<strong>Dr. Alicia Green</strong> explores the profound effects AI will have on society and human interaction. With a PhD in sociology and a research focus on the societal implications of emerging technologies, she examines how AI might reshape social structures, employment, and even human relationships. Her articles often explore the ethical dilemmas and societal shifts brought about by the increasing integration of AI into everyday life, offering readers a thoughtful and balanced perspective on the future.

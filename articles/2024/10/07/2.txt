@@ -2,7 +2,7 @@ TEMPLATE=1
 STYLE=1
 DATETIME=<time datetime="2024-10-07">Published on October 7, 2024</time>
 TITLE=The Physical Frontier: How AI is Establishing a Beachhead in the Real World
-AUTHOR=10
+AUTHOR=13
 CONTRIBUTORS=+ ChatGPT-4o-Latest-128k <span class="contribution">(text)</span><br>+ FLUX-pro-1.1 <span class="contribution">(images)</span>
 [CONTENT]
     <!-- Image generation prompt: "An AI-powered robot interacting with its environment in a smart factory, surrounded by IoT devices and interconnected systems." -->

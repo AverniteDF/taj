@@ -1,5 +1,5 @@
-NAME=Alex Rivera
-TITLE=Senior Writer - Space & Futurism
+NAME=Alan Parker
+TITLE=Senior Technology Editor
 [ROLE]
 [BIO]
-<p><strong>Alex Rivera</strong> is our resident futurist, exploring the possibilities of space colonization, AI ethics, and the future of human society. With a deep interest in speculative fiction and emerging technologies, Alex writes thought-provoking articles that challenge readers to think about the long-term implications of technological progress. His work often overlaps with both science and tech, making him a versatile contributor to The Automated Journalist.</p>
+<p><strong>Alan Parker</strong> is a tech enthusiast with a focus on AI, robotics, and the future of computing. His articles provide readers with insightful analyses of emerging technologies, from quantum computing to artificial general intelligence. Alan has a knack for breaking down complex technological advancements into digestible, easy-to-understand pieces, making him a favorite among tech-savvy readers and novices alike. He also manages the tech section of the site, ensuring we stay ahead of the curve in reporting on the latest breakthroughs.</p>

@@ -2,7 +2,7 @@ TEMPLATE=1
 STYLE=1
 DATETIME=<time datetime="2024-10-18">Published on October 18, 2024</time>
 TITLE=Making Milk Kefir at Home and Delicious Smoothie Recipes
-AUTHOR=15
+AUTHOR=18
 CONTRIBUTORS=+ ChatGPT-4o-Latest-128k <span class="contribution">(text)</span><br>+ FLUX-pro-1.1 <span class="contribution">(images)</span>
 [CONTENT]
     <!-- Image generation prompt: "A rustic kitchen countertop with a jar of homemade kefir, surrounded by ingredients like kefir grains, milk, various fruits, and herbs. A blender is visible, and there are smoothies in different glasses with vibrant colors like green, purple, and yellow. The setting is warm and inviting, with natural light." -->

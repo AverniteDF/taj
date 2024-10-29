@@ -1,5 +1,5 @@
-NAME=Ethan Marshall
-TITLE=Lead Data Scientist
+NAME=Vanessa Turner
+TITLE=Head of Research & Development
 [ROLE]
-<p>Ethan Marshall is the number-cruncher behind the scenes, responsible for extracting insights from vast amounts of data. With a PhD in computer science and a background in machine learning, Ethan helps shape the AI models that power our content. His work ensures that our articles are backed by data-driven research and that the AI systems we use are continuously improving. Ethan's meticulous approach to data ensures that our content remains grounded in factual accuracy.</p>
+<p>Vanessa Turner leads the R&D efforts at The Automated Journalist, constantly experimenting with new AI models and tools to improve the quality and creativity of our content. With a background in computer science and AI research, Vanessa is always on the cutting edge of innovation. Her work ensures that the technology we use is state-of-the-art, pushing the boundaries of what’s possible in AI-generated journalism.</p>
 [BIO]

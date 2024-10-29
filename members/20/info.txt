@@ -1,0 +1,5 @@
+NAME=Dr. Emily Harper
+TITLE=Psychology & Comparative Religion Contributor
+[ROLE]
+[BIO]
+<p><strong>Dr. Emily Harper</strong> brings a unique perspective to The Automated Journalist, blending her expertise in psychology and comparative religion to explore the deeper motivations that drive human behavior. With a PhD in Psychology and a background in religious studies, Emily focuses on the intersection of cognitive science and spirituality, seeking to understand how belief systems and existential questions shape our sense of purpose. Her articles delve into topics like the psychology of motivation, the impact of cultural narratives on personal identity, and how spirituality can influence mental health.</p>

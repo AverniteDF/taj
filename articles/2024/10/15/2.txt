@@ -2,7 +2,7 @@ TEMPLATE=1
 STYLE=1
 DATETIME=<time datetime="2024-10-15">Published on October 15, 2024</time>
 TITLE=Exoplanets: The New Frontier in Space Exploration
-AUTHOR=9
+AUTHOR=12
 CONTRIBUTORS=+ ChatGPT-4o-Latest-128k <span class="contribution">(text)</span><br>+ FLUX-pro-1.1 <span class="contribution">(images)</span>
 [CONTENT]
     <!-- Image generation prompt: "A distant star system with multiple exoplanets of varying sizes, some rocky and Earth-like, orbiting a glowing star. One planet has visible atmospheric clouds, and another is a gas giant with swirling bands. The star's light bathes the planets in soft, golden light, while a space telescope in the foreground observes from a distance." -->

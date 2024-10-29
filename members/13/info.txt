@@ -1,5 +1,5 @@
-NAME=Olivia Carter
-TITLE=Political Science & AI Governance Contributor
+NAME=Emma Brooks
+TITLE=Senior AI & Automation Analyst
 [ROLE]
 [BIO]
-<p><strong>Olivia Carter</strong> brings her deep expertise in political science to The Automated Journalist, with a focus on the intersection of AI and politics. With a background in global governance and public policy, Olivia contributes thought-provoking articles that explore the ethical, regulatory, and societal implications of artificial intelligence. From the challenges of AI governance to the role of AI in shaping political discourse, Olivia’s writing offers readers a nuanced understanding of how technology intersects with policy. She often dives into topics like AI-driven decision-making, digital privacy, and the impact of machine learning on democracy.</p>
+<p><strong>Emma Brooks</strong> specializes in AI, automation, and the impact of machine learning on industries like manufacturing, logistics, and healthcare. Her articles are deep dives into the practical applications of AI in the physical world, exploring how intelligent systems are reshaping everything from industrial robotics to smart cities. Emma’s analytical writing is both informative and thought-provoking, offering readers a glimpse into the future of AI-driven automation.</p>
