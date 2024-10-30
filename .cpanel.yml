@@ -3,3 +3,4 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/theauto1/public_html/
     - /bin/cp index.php $DEPLOYPATH
+    - /bin/cp -R articles $DEPLOYPATH
