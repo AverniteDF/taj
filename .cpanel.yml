@@ -2,7 +2,7 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/theauto1/public_html/
-    - find articles -type f -name "*.txt" -exec /bin/cp --parents {} $DEPLOYPATH \;
+    - /bin/cp -R articles $DEPLOYPATH
     - /bin/cp -R authors $DEPLOYPATH
     - /bin/cp -R styles $DEPLOYPATH
     - /bin/cp -R templates $DEPLOYPATH
