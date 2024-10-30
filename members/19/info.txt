@@ -1,5 +1,5 @@
-NAME=Maya Gupta
-TITLE=Health & Wellness Contributor
+NAME=Tasha Williams
+TITLE=Lead Nutritionist & Fitness Contributor
 [ROLE]
 [BIO]
-<p><strong>Maya Gupta</strong> focuses on holistic health and natural wellness. With expertise in naturopathy, meditation, yoga, and Ayurvedic medicine, Maya offers a unique perspective on integrative health practices. Her articles emphasize the healing power of nature and the mind-body connection, providing readers with accessible tips on how to integrate natural remedies and mindfulness into their daily lives.</p>
+<p><strong>Tasha Williams</strong> is a registered dietician with a passion for both whole foods and nutritional supplements. With a background in clinical nutrition and functional medicine, Tasha writes articles that blend traditional dietary advice with cutting-edge insights into supplementation. Her work offers readers practical, science-backed advice on how to optimize their health through balanced nutrition and targeted supplementation. Tasha also explores the emerging science behind gut health, micronutrient deficiencies, and personalized nutrition.</p>

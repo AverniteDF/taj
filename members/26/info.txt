@@ -1,0 +1,5 @@
+NAME=Jason Cruz
+TITLE=AI in Software Development Contributor
+[ROLE]
+[BIO]
+<strong>Jason Cruz</strong> is a seasoned programmer and technology writer specializing in AI-assisted software development. With a background in computer science and over a decade of experience in software engineering, Jason focuses on how AI tools are transforming the software development lifecycle. His articles explore topics like AI-driven code generation, debugging tools, and how developers can leverage machine learning to improve efficiency and code quality. Jason's deep technical knowledge and pragmatic approach make him a favorite among software professionals looking to stay ahead of the curve.

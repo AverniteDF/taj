@@ -141,7 +141,7 @@
             <h2 style="margin: 5px; text-align: center;">About Us</h2>
             <p>At <strong>The Automated Journalist</strong>, we believe in the power of artificial intelligence to revolutionize storytelling and content creation. Our mission is to leverage cutting-edge AI technologies to produce engaging, informative, and thought-provoking articles on topics like health, wellness, technology, space exploration, and more. By blending human editorial oversight with AI-generated content, we aim to create a platform where stories are not only informative but also innovative, offering readers fresh perspectives on the issues that matter most.</p>
         </div>
-<?php for ($i = 1; $i < 23; $i++) { if (!file_exists("members/$i/info.txt")) continue; ?>
+<?php for ($i = 1; $i < 100; $i++) { if (!file_exists("members/$i/info.txt")) continue; ?>
 
         <div class="team-member" <?php echo 'id="m' . ($id = $i) . '"'; ?>>
             <?php echoln(getMemberPortrait($id)); ?>

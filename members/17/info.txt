@@ -1,5 +1,5 @@
-NAME=Joshua Bennett
-TITLE=Cognitive Philosopher & AI Ethics Contributor
+NAME=Dr. Kenji Nakamura
+TITLE=Neuroscientist & Brain-Computer Interface Specialist
 [ROLE]
 [BIO]
-<p><strong>Joshua Bennett</strong> is a philosopher with a deep passion for unraveling the enigma of consciousness and exploring the complex landscape of the philosophy of mind. With a dual background in cognitive science and philosophy, his writings engage with thought-provoking issues surrounding the nature of consciousness and its intersection with artificial intelligence. His work focuses on machine consciousness, the hard problem of consciousness, and the ethical implications of AI advancements. Joshua's contributions aim to challenge conventional perspectives on the mind and stimulate dialogue about the future of intelligent systems.</p>
+<strong>Dr. Kenji Nakamura</strong> is a neuroscientist specializing in the cutting-edge field of brain-computer interfaces (BCIs). With a PhD in Neuroscience and a focus on neural engineering, Kenji contributes articles that discuss the fascinating possibilities of direct communication between the brain and machines. His work covers everything from neural implants that assist with rehabilitation to the ethical implications of memory enhancement and cognitive augmentation. Dr. Nakamura’s writing engages readers with both the scientific rigor and the profound philosophical questions that arise as we move toward a future where the brain and technology may seamlessly integrate.

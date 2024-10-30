@@ -1,5 +1,5 @@
-NAME=Tasha Williams
-TITLE=Lead Nutritionist & Fitness Contributor
+NAME=Joshua Bennett
+TITLE=Cognitive Philosopher & AI Ethics Contributor
 [ROLE]
 [BIO]
-<p><strong>Tasha Williams</strong> is a registered dietician with a passion for both whole foods and nutritional supplements. With a background in clinical nutrition and functional medicine, Tasha writes articles that blend traditional dietary advice with cutting-edge insights into supplementation. Her work offers readers practical, science-backed advice on how to optimize their health through balanced nutrition and targeted supplementation. Tasha also explores the emerging science behind gut health, micronutrient deficiencies, and personalized nutrition.</p>
+<p><strong>Joshua Bennett</strong> is a philosopher with a deep passion for unraveling the enigma of consciousness and exploring the complex landscape of the philosophy of mind. With a dual background in cognitive science and philosophy, his writings engage with thought-provoking issues surrounding the nature of consciousness and its intersection with artificial intelligence. His work focuses on machine consciousness, the hard problem of consciousness, and the ethical implications of AI advancements. Joshua's contributions aim to challenge conventional perspectives on the mind and stimulate dialogue about the future of intelligent systems.</p>

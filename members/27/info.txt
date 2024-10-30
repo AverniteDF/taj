@@ -1,0 +1,5 @@
+NAME=Camille Dorsey
+TITLE=AI-Generated Artforms Specialist
+[ROLE]
+[BIO]
+<strong>Camille Dorsey</strong> is an artist with a strong interest in AI-generated art and its potential to reshape the creative landscape. With a background in fine arts and digital media, Camille explores the intersection of human creativity and machine intelligence. Her contributions include articles on the ethics of AI in art, how generative models are transforming visual storytelling, and the future of art in a world increasingly influenced by algorithms. Camille’s unique perspective combines traditional artistic methods with cutting-edge AI technologies.
