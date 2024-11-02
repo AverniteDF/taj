@@ -191,7 +191,7 @@
             display: inline-block;
             font-size: 0.9em;
             vertical-align: top;
-            cursor: pointer;
+            cursor: default;
             position: relative;
         }
 
@@ -227,11 +227,6 @@
             .gear-icon:hover .popup {
                 display: block;
             }
-        }
-
-        /* Active class for touch devices */
-        .popup.active {
-            display: block;
         }
 
         @media (max-width: 600px) {

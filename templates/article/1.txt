@@ -36,34 +36,5 @@
 </footer>
 </a>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const gearIcon = document.querySelector('.gear-icon');
-        const popup = document.querySelector('.popup');
-        let touchDevice = false;
-
-        // Detect if the user is on a touch device
-        window.addEventListener('touchstart', function onFirstTouch() {
-            touchDevice = true;
-            window.removeEventListener('touchstart', onFirstTouch);
-        });
-
-        // Handle tap/click events for touch devices
-        gearIcon.addEventListener('click', function(e) {
-            if (touchDevice) {
-                e.preventDefault(); // Prevent default click behavior
-                popup.classList.toggle('active'); // Toggle the popup visibility
-            }
-        });
-
-        // Close popup when clicking outside of the gear icon (for touch devices)
-        document.addEventListener('click', function(e) {
-            if (touchDevice && !gearIcon.contains(e.target) && popup.classList.contains('active')) {
-                popup.classList.remove('active');
-            }
-        });
-    });
-</script>
-
 </body>
 </html>
