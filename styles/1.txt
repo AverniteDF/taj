@@ -188,45 +188,50 @@
         }
 
         .gear-icon {
+            display: inline-block;
             font-size: 0.9em;
             vertical-align: top;
             cursor: pointer;
             position: relative;
         }
 
-        .gear-icon:hover .tooltip {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        .tooltip {
-            visibility: hidden;
-            opacity: 0;
-            width: 190px;
+        .popup {
+            display: none;
+            position: absolute;
             background-color: #555;
             color: #ddd;
-            text-align: left;
             border-radius: 5px;
             padding: 10px;
-            position: absolute;
-            z-index: 1;
-            bottom: 100%; /* Position above the icon */
-            left: 0px;
-            margin-left: -95px; /* Center the tooltip */
-            transition: opacity 0.0s;
+            width: 190px;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
             font-size: 0.9em;
+            z-index: 1;
         }
 
         /* Tooltip arrow */
-        .tooltip::after {
+        .popup::after {
             content: "";
             position: absolute;
             top: 100%;
             left: 50%;
-            margin-left: -8px;
+            margin-left: -5px;
             border-width: 5px;
             border-style: solid;
             border-color: #555 transparent transparent transparent;
+        }
+
+        /* Show popup on hover for non-touch devices */
+        @media (hover: hover) {
+            .gear-icon:hover .popup {
+                display: block;
+            }
+        }
+
+        /* Active class for touch devices */
+        .popup.active {
+            display: block;
         }
 
         @media (max-width: 600px) {
