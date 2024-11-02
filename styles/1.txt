@@ -195,8 +195,14 @@
             position: relative;
         }
 
+        .gear-icon:hover .popup {
+            visibility: visible;
+            opacity: 1;
+        }
+
         .popup {
-            display: none;
+            visibility: hidden;
+            opacity: 0;
             position: absolute;
             background-color: #555;
             color: #ddd;
@@ -223,11 +229,11 @@
         }
 
         /* Show popup on hover for non-touch devices */
-        @media (hover: hover) {
+        /*@media (hover: hover) {
             .gear-icon:hover .popup {
                 display: block;
             }
-        }
+        }*/
 
         @media (max-width: 600px) {
             body {
