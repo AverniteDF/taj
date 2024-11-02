@@ -228,13 +228,6 @@
             border-color: #555 transparent transparent transparent;
         }
 
-        /* Show popup on hover for non-touch devices */
-        /*@media (hover: hover) {
-            .gear-icon:hover .popup {
-                display: block;
-            }
-        }*/
-
         @media (max-width: 600px) {
             body {
                 padding: 10px;
