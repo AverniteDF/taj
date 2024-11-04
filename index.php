@@ -56,7 +56,7 @@ function getArticlePaths($dir) {
 function getArticleDateFromPath($path) {
     // Assuming the path is in the format /articles/YYYY/MM/DD/#.txt
     // Example: /articles/2024/10/06/1.txt
-    preg_match('/\/articles\/(\d{4})\/(\d{2})\/(\d{2})\//', $path, $matches);
+    preg_match('/\/articles\/(\d{4})\/(\d{2})\/(\d{2})\//', str_replace('\\', '/', $path), $matches);
     if ($matches) {
         return sprintf('%s-%s-%s', $matches[1], $matches[2], $matches[3]); // YYYY-MM-DD
     }
@@ -73,7 +73,7 @@ function getArticleMetadata($path) {
     //$content = file_get_contents($path);
 
     // More efficient than reading entire file
-    $handle = fopen($path, 'r');
+    /*$handle = fopen($path, 'r');
     $firstLines = '';
     if ($handle) {
         $lineCount = 0;
@@ -85,21 +85,24 @@ function getArticleMetadata($path) {
     } else {
         echo "Error opening file ($path).";
     }
-		$content = $firstLines;
-    
-    preg_match('/TITLE=(.+)/', $content, $titleMatch);
-    preg_match('/DATETIME=<time datetime="(\d{4}-\d{2}-\d{2})">/', $content, $dateMatch);
-    
+    $content = $firstLines;*/
+
+    $handle = fopen($path, 'r') or die("Error opening file ($path).");
+    $content = fgets($handle) or die("No content found in file ($path).");
+
+    preg_match('/TITLE=(.+)/', $content, $titleMatch) or die("No TITLE field found in file ($path). Expected to be first line.");
+
     return [
         'title' => isset($titleMatch[1]) ? trim($titleMatch[1]) : 'Untitled',
-        'date' => isset($dateMatch[1]) ? $dateMatch[1] : '',
+        'date' => getArticleDateFromPath($path),
         'path' => $path
     ];
 }
 
 function groupArticlesByMonth($articles) {
     $grouped = [];
-    foreach ($articles as $article) {
+    for ($i = count($articles) - 1; $i >= 0; $i--) {
+        $article = $articles[$i];
         $metadata = getArticleMetadata($article);
         $date = $metadata['date'];
         $monthYear = date('F Y', strtotime($date)); // Convert date to "Month Year" format
@@ -126,11 +129,10 @@ function renderIndex($message = '') {
 
         $html = ''; $indent = 8;
         foreach ($groupedArticles as $monthYear => $articles) {
-            $html = $html . "\n" . space($indent) . "<h3>$monthYear</h3>\n";
+            $html = $html . "\n\n" . space($indent) . "<h3>$monthYear</h3>\n";
 
             $html = $html . space($indent) . "<ul>\n";
-            for ($i = count($articles) - 1; $i >= 0; $i--) {
-                $article = $articles[$i];
+            foreach ($articles as $article) {
                 $relativePath = str_replace([$articleDirectory, '.txt'], '', $article['path']);
 
                 $url = '/?article=' . str_replace('/', '-', trim($relativePath, '/\\'));
@@ -139,14 +141,14 @@ function renderIndex($message = '') {
                 $hidden = $showHidden && preg_match('/-\.\d+$/', $url);
 
                 $html .= space($indent + 4) . '<li' . ($hidden ? ' style="background-color: #eee;"' : '') . '><a href="' . $url . '">';
-                $html .= '<span class="publish-date">(' . date('M d', strtotime($article['date'])) . ')</span> | ';
+                $html .= '<span class="publish-date">' . date('M d', strtotime($article['date'])) . '</span> | ';
                 $html .= htmlspecialchars($article['title']);
                 $html .= "</a></li>\n";
             }
-						$html .= space($indent) . '</ul>';
+            $html .= space($indent) . '</ul>';
         }
 				
-				echo str_replace(space($indent) . '<!-- (ARTICLE LINKS) -->', $html, $templateContent);
+        echo preg_replace(space($indent) . '/\s*<!-- \(ARTICLE LINKS\) -->/', $html, $templateContent);
     }
 		else {
         echo "Error: Index file not found.";
@@ -205,8 +207,8 @@ function renderArticle($articlePath) {
     preg_match('/STYLE=(.+)/', $articleContent, $matches);
     $fields['style'] = isset($matches[1]) ? trim($matches[1]) . '.txt' : $defaultStyle;
 
-    preg_match('/DATETIME=(.+)/', $articleContent, $matches);
-    $fields['datetime'] = isset($matches[1]) ? trim($matches[1]) : '';
+    $dateFromPath = getArticleDateFromPath($articlePath);
+    $fields['datetime'] = "<time datetime=\"$dateFromPath\">Published on " . date('F j, Y', strtotime($dateFromPath)) . '</time>';
 
     preg_match('/TITLE=(.+)/', $articleContent, $matches);
     $fields['title'] = isset($matches[1]) ? trim($matches[1]) : 'Untitled Article';
@@ -276,7 +278,7 @@ if (!checkForUnrecognizedParams(['about', 'article', 'showall', 'text', 'email',
     // Add "ErrorDocument 404 /index.php?rnf" to .htaccess file and restart Apache web server for this to work (Nginx uses "server { error_page 404 /index.php?rnf; }")
     if (paramKey('rnf')) { renderIndex('The resource you requested does not exist'); }
     elseif (paramKey('about')) { include($aboutDirectory . '/1.txt'); }
-    elseif (paramKey('email')) { echo file_get_contents($emailsDirectory . '/' . paramVal('email', 1) . '.html'); }
+    elseif (paramKey('email')) { echo file_get_contents($emailsDirectory . '/' . paramVal('email', 2) . '.html'); }
     elseif ($articleParam)
     {
         if (preg_match('/^\d{4}-\d{2}-\d{2}-\.?\d+$/', $articleParam)) // Check if the article specifier has correct format

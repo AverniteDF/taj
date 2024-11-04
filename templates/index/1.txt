@@ -48,6 +48,7 @@
             color:white;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             font-size: 0.95em;
+            margin-top: 20px;
             margin-bottom: 0;
             padding: 4px;
             text-align: center;
