@@ -2,4 +2,4 @@ NAME=Maya Gupta
 TITLE=Health & Wellness Contributor
 [ROLE]
 [BIO]
-<p><strong>Maya Gupta</strong> focuses on holistic health and natural wellness. With expertise in naturopathy, meditation, yoga, and Ayurvedic medicine, Maya offers a unique perspective on integrative health practices. Her articles emphasize the healing power of nature and the mind-body connection, providing readers with accessible tips on how to integrate natural remedies and mindfulness into their daily lives.</p>
+<p><strong>Maya Gupta</strong> explores the interconnectedness of mind, body, and nature through the lens of holistic health. Drawing on her expertise in naturopathy, meditation, yoga, and Ayurvedic medicine, she offers insights into integrative wellness practices. Maya emphasizes the importance of gut health for overall well-being, exploring the impact of diet on digestion and immunity. Her articles provide accessible tips for incorporating natural remedies and mindfulness into daily life, empowering readers to cultivate a deeper connection with their inner selves and the natural world.</p>
