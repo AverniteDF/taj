@@ -1,4 +1,4 @@
-TITLE=The Age of Technocracy: How AI Will Reshape Global Governance
+TITLE=Emerging Technocracies: How AI Will Reshape Global Governance
 AUTHOR=16
 CONTRIBUTORS=+ ChatGPT-4o-Latest-128k <span class="contribution">(text)</span><br>+ FLUX-pro-1.1 <span class="contribution">(images)</span>
 TEMPLATE=1
