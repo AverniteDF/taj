@@ -1,5 +1,5 @@
 NAME=Laura Collins
 TITLE=Human Resources Manager
 [ROLE]
-As the HR Manager at The Automated Journalist, Laura Collins is responsible for nurturing the company's culture and ensuring the well-being of its employees. With an extensive background in talent acquisition, employee relations, and organizational development, Laura is passionate about creating a positive work environment where everyone feels valued. She oversees recruitment, staff development, and employee engagement, ensuring that The Automated Journalist attracts and retains top talent.
+<p>As the HR Manager at The Automated Journalist, Laura Collins is responsible for nurturing the company's culture and ensuring the well-being of its employees. With an extensive background in talent acquisition, employee relations, and organizational development, Laura is passionate about creating a positive work environment where everyone feels valued. She oversees recruitment, staff development, and employee engagement, ensuring that The Automated Journalist attracts and retains top talent.</p>
 [BIO]

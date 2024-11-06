@@ -2,4 +2,4 @@ NAME=Clara McKenzie
 TITLE=AI Architect & Interior Design Innovator
 [ROLE]
 [BIO]
-<strong>Clara McKenzie</strong> is a visionary in the field of architecture and interior design, using AI to push the boundaries of spatial planning and aesthetic innovation. With a degree in Architecture and a specialization in AI-driven design tools, Clara writes about how artificial intelligence is revolutionizing the way we envision and construct spaces. Her articles cover topics like AI-assisted design processes, smart homes, and how machine learning can optimize both functionality and beauty in modern architecture.
+<p><strong>Clara McKenzie</strong> is a visionary in the field of architecture and interior design, using AI to push the boundaries of spatial planning and aesthetic innovation. With a degree in Architecture and a specialization in AI-driven design tools, Clara writes about how artificial intelligence is revolutionizing the way we envision and construct spaces. Her articles cover topics like AI-assisted design processes, smart homes, and how machine learning can optimize both functionality and beauty in modern architecture.</p>

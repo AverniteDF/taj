@@ -1,0 +1,5 @@
+NAME=Daniel Abadi
+TITLE=Cryptocurrency & Blockchain Contributor
+[ROLE]
+[BIO]
+<p><strong>Daniel Ruiz</strong> is a specialist in cryptocurrencies and blockchain technology, with a deep understanding of digital currencies like Bitcoin, Ethereum, and emerging decentralized finance (DeFi) platforms. He writes extensively about the future of digital currencies, blockchain innovations, and their potential to disrupt traditional financial systems. With a background in economics and software development, Daniel brings a balanced perspective that appeals to both crypto enthusiasts and curious newcomers alike.</p>

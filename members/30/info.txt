@@ -2,4 +2,4 @@ NAME=Marcus Washington
 TITLE=AI in Entertainment & Film Industry Contributor
 [ROLE]
 [BIO]
-<strong>Marcus Washington</strong> is a film and entertainment industry analyst with a focus on how AI is revolutionizing the world of cinema. With a background in film studies and technology, Marcus explores the ways AI is being used to enhance special effects, automate post-production processes, and even generate entire scripts. His articles also examine the ethical implications of AI in filmmaking, from deepfakes to AI-generated actors. Marcus offers readers a front-row seat to the future of entertainment.
+<p><strong>Marcus Washington</strong> is a film and entertainment industry analyst with a focus on how AI is revolutionizing the world of cinema. With a background in film studies and technology, Marcus explores the ways AI is being used to enhance special effects, automate post-production processes, and even generate entire scripts. His articles also examine the ethical implications of AI in filmmaking, from deepfakes to AI-generated actors. Marcus offers readers a front-row seat to the future of entertainment.</p>

@@ -1,5 +1,5 @@
 NAME=Tyler Johnson
 TITLE=Network Administrator
 [ROLE]
-Tyler Johnson is the technical core of The Automated Journalist, responsible for maintaining the company's IT infrastructure, ensuring cybersecurity, and managing the network systems. With a background in network engineering and experience working with large-scale systems, Tyler ensures that the company’s digital assets are secure and accessible. His expertise in troubleshooting and optimizing network performance makes him an invaluable asset to the team.
+<p>Tyler Johnson is the technical core of The Automated Journalist, responsible for maintaining the company's IT infrastructure, ensuring cybersecurity, and managing the network systems. With a background in network engineering and experience working with large-scale systems, Tyler ensures that the company’s digital assets are secure and accessible. His expertise in troubleshooting and optimizing network performance makes him an invaluable asset to the team.</p>
 [BIO]

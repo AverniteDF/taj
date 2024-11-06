@@ -1,5 +1,5 @@
 NAME=Kevin Anderson
 TITLE=Chief Financial Officer
 [ROLE]
-Kevin Anderson leads the financial operations at The Automated Journalist, ensuring that the company's budgets are balanced, investments are smart, and financial strategies align with long-term goals. With a degree in finance and over a decade of experience in financial management for tech startups, Kevin is a meticulous planner who thrives in a data-driven environment. His leadership ensures the financial sustainability and growth of the company, allowing the team to focus on innovation without worrying about the bottom line.
+<p>Kevin Anderson leads the financial operations at The Automated Journalist, ensuring that the company's budgets are balanced, investments are smart, and financial strategies align with long-term goals. With a degree in finance and over a decade of experience in financial management for tech startups, Kevin is a meticulous planner who thrives in a data-driven environment. His leadership ensures the financial sustainability and growth of the company, allowing the team to focus on innovation without worrying about the bottom line.</p>
 [BIO]

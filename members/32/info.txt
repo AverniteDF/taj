@@ -1,0 +1,5 @@
+NAME=Alice Monroe
+TITLE=AI in Digital Entertainment Contributor
+[ROLE]
+[BIO]
+<p><strong>Alice Monroe</strong> is an expert in how artificial intelligence is reshaping the world of interactive digital entertainment, from video games to immersive virtual experiences. Alice explores how AI-driven systems are pushing the boundaries of realism and complexity in game design, enhancing everything from NPC behavior to dynamic storytelling. With a background in game development and AI technology, her articles highlight the evolving relationship between human creativity and machine-assisted entertainment.</p>
