@@ -41,9 +41,9 @@
         .image-caption {
             text-align: center;
             font-style: italic;
-            margin-top: -10px;
-            color: #555;
-            font-size: 1em;
+            margin-top: -12px;
+            color: #666;
+            font-size: 0.975em;
         }
 
         h2 {
@@ -80,6 +80,11 @@
             line-height: 1.4;
             font-size: 1.1em;
             margin: 5px 0px 0px 0px;
+        }
+
+        ul img {
+            margin-top: 20px;
+            margin-bottom: 35px;
         }
 
         blockquote {
