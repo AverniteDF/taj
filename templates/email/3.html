@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-<!-- Context: Whenever I publish a new article I send an html email to my mailing list of readers to notify them. This document is a template for such an email. Please adapt it for the new article which can be found at https://theautomatedjournalist.com/?article=2024-11-05-4&text. The "article" param takes the form YYYY-MM-DD-#. Don't change the layout, but please rewrite the text to suit the content of the new article, and also make adjustments to the text to keep the email "fresh" and engaging for readers. -->
-<!-- Requirements: 1) All styling code must be done inline using the "style" attribute. Do not use a <script> tag! 2) All references to "http://localhost/" must be changed to "https://theautomatedjournalist.com/" 3) The "&text" param needs to be removed from the article link url -->
-<!-- Note: Sarah Thompson will be the sender of the email (not the article author). -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,7 +7,7 @@
 </head>
 <body> <!-- Do not add style to the <body> tag! Use the enclosing <div> instead -->
 <div style="font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #333; background-color: white;"> <!-- This is the enclosing <div> -->
-    <img style="width: 480px; border: 2px solid #333; border-radius: 5px; max-width: 100%; height: auto;" alt="Article splash image" src="http://localhost/articles/2024/11/03/3/splash.jpg"> <!-- The YYYY/MM/DD/# needs to correspond with the value of the "article" param in the new article url -->
+    <img style="width: 480px; border: 2px solid #333; border-radius: 5px; max-width: 100%; height: auto;" alt="Article splash image" src="http://localhost/articles/2024/11/03/3/splash.jpg">
 
     <div style="margin-bottom: 1.0rem;">
         <p>Dear Esteemed Members and Valued Readers,</p>
@@ -28,7 +25,6 @@
 
         <p>Whether you're curious about its impact on sustainability or health, or just want to know if it tastes good, this comprehensive guide has you covered!</p>
 
-        <!-- The link below needs to correspond with the new article url, and the "text" param needs to be removed -->
         <a href="https://theautomatedjournalist.com/?article=2024-11-03-3&text" style="display: inline-block; background-color: #e67e22; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; margin: 1rem 0; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#d35400'" onmouseout="this.style.backgroundColor='#e67e22'">Read the Full Article</a>
     </div>
 

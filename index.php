@@ -278,7 +278,7 @@ if (!checkForUnrecognizedParams(['about', 'article', 'showall', 'text', 'email',
     // Add "ErrorDocument 404 /index.php?rnf" to .htaccess file and restart Apache web server for this to work (Nginx uses "server { error_page 404 /index.php?rnf; }")
     if (paramKey('rnf')) { renderIndex('The resource you requested does not exist'); }
     elseif (paramKey('about')) { include($aboutDirectory . '/1.txt'); }
-    elseif (paramKey('email')) { echo file_get_contents($emailsDirectory . '/' . paramVal('email', 2) . '.html'); }
+    elseif (paramKey('email')) { echo file_get_contents($emailsDirectory . '/' . paramVal('email', 3) . '.html'); }
     elseif ($articleParam)
     {
         if (preg_match('/^\d{4}-\d{2}-\d{2}-\.?\d+$/', $articleParam)) // Check if the article specifier has correct format
